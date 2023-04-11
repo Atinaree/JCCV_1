@@ -16,6 +16,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView(){
+
+
     }
 
     private fun getRetrofit():Retrofit{
@@ -23,8 +29,7 @@ class MainActivity : AppCompatActivity() {
             .baseUrl("https://viewnextandroid.mocklab.io/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
-
     }
+
 
 }
