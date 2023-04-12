@@ -2,7 +2,10 @@ package com.example.jccv_1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.jccv_1.databinding.ActivityMainBinding
+import com.example.jccv_1.model.CustomAdapter
 import com.google.gson.Gson
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,6 +20,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initRecyclerView()
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val adapter = CustomAdapter();
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
+
+
     }
 
     private fun initRecyclerView(){
