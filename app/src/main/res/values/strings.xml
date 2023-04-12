@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">JCCV_1</string>
+    <string name="botonConsumo">&lt;  Consumo</string>
+    <string name="textFacturas">Facturas</string>
+    <string name="fecha">31 agosto</string>
+    <string name="estado">Pendiente de pago</string>
+    <string name="importe">5647</string>
 </resources>
