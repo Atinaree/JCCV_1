@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.jccv_1.R
 
 class CustomAdapter: RecyclerView.Adapter<CustomAdapter.ViewHolder> (){
-    val fechas = arrayOf("hola","pepe")
-    val estados = arrayOf("paco", "susana")
-    val importes = arrayOf("1","2")
+    val fechas = arrayOf("hola","pepe","carlos")
+    val estados = arrayOf("paco", "susana", "sofia")
+    val importes = arrayOf("1","2", "3")
 
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {

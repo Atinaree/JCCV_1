@@ -1,7 +1,7 @@
 package com.example.jccv_1.model
 
 data class Facturas(
-    val Estado: String,
-    val importe: Double,
+    var Estado: String,
+    var importe: Double,
     val fecha: String)
 
