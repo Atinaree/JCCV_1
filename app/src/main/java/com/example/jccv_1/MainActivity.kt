@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.jccv_1.databinding.ActivityMainBinding
 import com.example.jccv_1.model.ApiService
 import com.example.jccv_1.model.CustomAdapter
@@ -24,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initRecyclerView()
+
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val adapter = CustomAdapter()
 
@@ -52,22 +51,6 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
-    private fun initRecyclerView(){
-
-
-    }
-
-    private fun getRetrofit():Retrofit{
-        return Retrofit.Builder()
-            .baseUrl("https://viewnextandroid.mocklab.io/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
-
-
-
 
         }
 

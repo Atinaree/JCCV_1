@@ -63,7 +63,6 @@ class CustomAdapter : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
     }
 
 
-
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemFecha: TextView = itemView.findViewById(R.id.fecha)
         val itemEstado: TextView = itemView.findViewById(R.id.estado)
