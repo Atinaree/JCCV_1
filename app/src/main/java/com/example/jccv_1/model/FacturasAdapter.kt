@@ -11,9 +11,9 @@ import com.example.jccv_1.R
 
 class CustomAdapter : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
-    private val fechas = arrayOf("hola", "pepe", "carlos")
-    private val estados = arrayOf("paco", "susana", "sofia")
-    private val importes = arrayOf("1", "2", "3")
+    private val fechas = arrayOf("hola", "pepe", "carlos", "hola", "pepe", "carlos")
+    private val estados = arrayOf("paco", "susana", "sofia", "hola", "pepe", "carlos")
+    private val importes = arrayOf("1", "2", "3", "hola", "pepe", "carlos")
 
     // Agregar una variable para rastrear si hay un popup abierto
     private var isPopupOpen = false
@@ -22,7 +22,9 @@ class CustomAdapter : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.itemfactura, parent, false)
         return ViewHolder(view)
     }
-
+    override fun getItemCount(): Int {
+        return fechas.size
+    }
     @SuppressLint("InflateParams")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemFecha.text = fechas[position]
@@ -44,6 +46,7 @@ class CustomAdapter : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
                 // Establecer las dimensiones de la vista emergente
                 popup.width = ViewGroup.LayoutParams.WRAP_CONTENT
                 popup.height = ViewGroup.LayoutParams.WRAP_CONTENT
+                popup.showAtLocation(popupView,1,0,0)
 
                 // Agregar escuchador de clics en el botón de cerrar
                 val closeButton = popupView.findViewById<Button>(R.id.close_button)
@@ -59,9 +62,7 @@ class CustomAdapter : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
         }
     }
 
-    override fun getItemCount(): Int {
-        return fechas.size
-    }
+
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemFecha: TextView = itemView.findViewById(R.id.fecha)
