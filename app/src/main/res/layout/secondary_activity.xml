@@ -7,94 +7,53 @@
     tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="349dp"
-        android:layout_height="34dp"
-        android:layout_marginBottom="100dp"
-        android:text="@string/conFecha"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/divider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928" />
-
     <ImageButton
         android:id="@+id/buttonFilter"
-        android:layout_width="32dp"
-        android:layout_height="36dp"
+        android:layout_width="29dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/equis"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="363dp"
-        tools:layout_editor_absoluteY="19dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="223dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="100dp"
-        android:text="@string/Filtrar"
-        android:textColor="#000000"
-        android:textSize="27sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.143"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.542" />
+        tools:ignore="MissingConstraints" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
+    <Button
+        android:id="@+id/button"
+        android:layout_width="400dp"
+        android:layout_height="86dp"
+        android:background="@drawable/redondeo_boton"
+        android:backgroundTint="#E91E63"
+        android:text="Aplicar"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:iconTint="#C62020"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ExtraText"
+        tools:layout_editor_absoluteY="752dp" />
+
+    <Button
+        android:id="@+id/button3"
+        style="@style/botonSinBordes"
+        android:layout_width="267dp"
+        android:layout_height="88dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#00ACAAAA"
+        android:text="Eliminar filtros"
+        android:textColor="#74A53B"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.298" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/date_picker_button"
-        android:layout_width="134dp"
-        android:layout_height="53dp"
-        android:backgroundTint="#CAC0C0"
-        android:onClick="showDatePickerDialog"
-        android:text="día/mes/año"
-        android:textAllCaps="false"
-        android:textColor="#0C0C0C"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="128dp" />
-
-    <Button
-        android:id="@+id/date_picker_button2"
-        android:layout_width="134dp"
-        android:layout_height="53dp"
-        android:backgroundTint="#CAC0C0"
-        android:onClick="showDatePickerDialog"
-        android:text="día/mes/año"
-        android:textAllCaps="false"
-        android:textColor="#0C0C0C"
-        tools:layout_editor_absoluteX="229dp"
-        tools:layout_editor_absoluteY="128dp" />
-
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="242dp"
-        android:layout_marginEnd="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="599dp"
+        android:layout_height="674dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="62dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

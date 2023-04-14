@@ -6,5 +6,19 @@
     <string name="estado">Pendiente de pago</string>
     <string name="importe">5647</string>
     <string name="Filtrar">Filtrar facturas</string>
-    <string name="conFecha">Con fecha de emisión</string>
+    <string name="Porfecha">Con fecha de emisión</string>
+    <string name="Porimporte">Por un importe</string>
+    <string name="Porestado">Por estado</string>
+    <string name="desde">Desde:</string>
+    <string name="hasta">Hasta:</string>
+    <string name="Pagadas">Pagadas</string>
+    <string name="Anuladas">Anuladas</string>
+    <string name="CuotaFija">Cuota Fija</string>
+    <string name="PendientesDePago">Pendientes de pago</string>
+    <string name="PlanDePago">Plan de pago</string>
+
+
+
+
+
 </resources>

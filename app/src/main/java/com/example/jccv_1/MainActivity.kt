@@ -1,16 +1,14 @@
 package com.example.jccv_1
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jccv_1.databinding.ActivityMainBinding
-import com.example.jccv_1.model.ApiService
-import com.example.jccv_1.model.CustomAdapter
-import com.example.jccv_1.model.FactForm
-import com.example.jccv_1.model.Facturas
+import com.example.jccv_1.model.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,9 +26,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.buttonFilter.setOnClickListener {
+            val intent = Intent(this, SecondaryActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
+
+
+
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val adapter = CustomAdapter()
-
         val retrofit = Retrofit.Builder()
             .baseUrl("https://viewnextandroid.wiremockapi.cloud/")
             .addConverterFactory(GsonConverterFactory.create())
