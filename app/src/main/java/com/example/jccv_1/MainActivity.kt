@@ -1,12 +1,15 @@
 package com.example.jccv_1
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jccv_1.databinding.ActivityMainBinding
 import com.example.jccv_1.model.ApiService
 import com.example.jccv_1.model.CustomAdapter
+import com.example.jccv_1.model.FactForm
 import com.example.jccv_1.model.Facturas
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,9 +19,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding:ActivityMainBinding
+     lateinit var binding: ActivityMainBinding
 
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -28,31 +32,29 @@ class MainActivity : AppCompatActivity() {
         val adapter = CustomAdapter()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://viewnextandroid.mocklab.io/")
+            .baseUrl("https://viewnextandroid.wiremockapi.cloud/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val api = retrofit.create(ApiService::class.java)
-            api.getFacturas().enqueue(object : Callback<List<Facturas>>{
-                override fun onResponse(
-                    call: Call<List<Facturas>>,
-                    response: Response<List<Facturas>>
-                ) {
 
-                }
-
-                override fun onFailure(call: Call<List<Facturas>>, t: Throwable) {
-
-                }
-            })
-
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
-
+                retrofit.create(ApiService::class.java).getFacturas().enqueue(object : Callback<FactForm> {
+                    override fun onResponse(call: Call<FactForm>, response: Response<FactForm>) {
+                        if (response.isSuccessful) {
+                            Log.d("prueba", response.body().toString())
+                            val factura = response.body()
+                            if (factura != null) {
+                                adapter.setData(factura.facturas as ArrayList<Facturas>) // convierte el objeto JSON en una lista para adaptarlo al RecyclerView
+                                recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
+                                recyclerView.adapter = adapter
+                            }
+                        } else {
+                            // Manejar el error y mostrar un mensaje de error al usuario
+                        }
+                    }
+                    override fun onFailure(call: Call<FactForm>, t: Throwable) {
+                        // Manejar el error y mostrar un mensaje de error al usuario
+                    }
+                })
 
     }
-
-        }
-
-
-
+}

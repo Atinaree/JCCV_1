@@ -1,7 +1,9 @@
 package com.example.jccv_1.model
 
-data class Facturas(
-    var estado: String,
-    var importe: Double,
-    val fecha: String)
+import com.google.gson.annotations.SerializedName
 
+data class Facturas(
+
+    var descEstado: String,
+    var importeOrdenacion: Double,
+    val fecha: String)
