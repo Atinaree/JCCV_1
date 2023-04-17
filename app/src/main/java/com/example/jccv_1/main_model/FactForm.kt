@@ -1,4 +1,4 @@
-package com.example.jccv_1.model
+package com.example.jccv_1.main_model
 
 data class FactForm (
     val numFacturas: Int,

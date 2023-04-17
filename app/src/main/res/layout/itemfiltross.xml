@@ -5,193 +5,231 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.cardview.widget.CardView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/cardView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <CheckBox
-                android:id="@+id/checkBox38"
-                android:layout_width="0dp"
-                android:layout_height="42dp"
+                android:id="@+id/chPlan"
+                android:layout_width="146dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/PlanDePago"
                 android:textSize="16sp"
-                tools:layout_editor_absoluteX="13dp"
-                tools:layout_editor_absoluteY="669dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chPendientes" />
 
             <View
                 android:id="@+id/divider4"
-                android:layout_width="0dp"
+                android:layout_width="411dp"
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider"
-                tools:layout_editor_absoluteY="319dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/barraImporte"
+                app:layout_constraintVertical_bias="0.028" />
 
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="0dp"
                 android:layout_height="34dp"
+                android:layout_marginStart="10dp"
                 android:text="@string/Porestado"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.484"
-                tools:layout_editor_absoluteX="5dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider4"
+                app:layout_constraintVertical_bias="0.026" />
 
             <CheckBox
-                android:id="@+id/checkBox39"
+                android:id="@+id/chPendientes"
                 android:layout_width="187dp"
                 android:layout_height="45dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/PendientesDePago"
                 android:textSize="16sp"
-                tools:layout_editor_absoluteX="13dp"
-                tools:layout_editor_absoluteY="602dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chCuotaFija" />
 
             <TextView
-                android:id="@+id/textView16"
-                android:layout_width="28dp"
-                android:layout_height="22dp"
+                android:id="@+id/importeMIN"
+                android:layout_width="51dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="40dp"
                 android:text="0€"
-                tools:layout_editor_absoluteX="14dp"
-                tools:layout_editor_absoluteY="245dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
             <CheckBox
-                android:id="@+id/checkBox36"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/chCuotaFija"
+                android:layout_width="117dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/CuotaFija"
                 android:textSize="16sp"
-                tools:layout_editor_absoluteX="13dp"
-                tools:layout_editor_absoluteY="528dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chAnulada" />
 
             <CheckBox
-                android:id="@+id/checkBox40"
+                android:id="@+id/chAnulada"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/Anuladas"
                 android:textSize="16sp"
-                tools:layout_editor_absoluteX="13dp"
-                tools:layout_editor_absoluteY="455dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chPagada" />
 
             <TextView
                 android:id="@+id/importeMAX"
                 android:layout_width="28dp"
                 android:layout_height="0dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="16dp"
                 android:text="0€"
-                tools:layout_editor_absoluteX="365dp"
-                tools:layout_editor_absoluteY="244dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/divider3" />
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/importeActual"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
                 android:text="SELECCION"
-                android:textColor="#74A53B"
-                tools:layout_editor_absoluteX="175dp"
-                tools:layout_editor_absoluteY="242dp" />
+                android:textColor="#8CC846"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/divider3" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="411dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="107dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+            <CheckBox
+                android:id="@+id/chPagada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/Pagadas"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="122dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/Porimporte"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/divider3" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="411dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/Porfecha"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.002" />
 
             <TextView
                 android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/desde"
-                tools:layout_editor_absoluteX="13dp"
-                tools:layout_editor_absoluteY="100dp" />
-
-            <TextView
-                android:id="@+id/textView27"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hasta"
-                tools:layout_editor_absoluteX="174dp"
-                tools:layout_editor_absoluteY="101dp" />
-
-            <View
-                android:id="@+id/divider3"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider"
-                tools:layout_editor_absoluteX="1dp"
-                tools:layout_editor_absoluteY="197dp" />
-
-            <CheckBox
-                android:id="@+id/checkBox37"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Pagadas"
-                android:textSize="16sp"
-                tools:layout_editor_absoluteX="13dp"
-                tools:layout_editor_absoluteY="382dp" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="0dp"
-                android:layout_height="23dp"
-                android:text="@string/Porimporte"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="5dp"
-                tools:layout_editor_absoluteY="210dp" />
-
-            <Button
-                android:id="@+id/date_picker_button6"
-                android:layout_width="135dp"
-                android:layout_height="0dp"
-                android:backgroundTint="#CAC0C0"
-                android:onClick="showDatePickerDialog"
-                android:text="día/mes/año"
-                android:textAllCaps="false"
-                android:textColor="#0C0C0C"
-                tools:layout_editor_absoluteX="174dp"
-                tools:layout_editor_absoluteY="130dp" />
-
-            <TextView
-                android:id="@+id/textView26"
-                android:layout_width="0dp"
-                android:layout_height="34dp"
-                android:text="@string/Porfecha"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="13dp"
-                tools:layout_editor_absoluteY="68dp" />
-
-            <SeekBar
-                android:id="@+id/seekBar3"
-                android:layout_width="392dp"
-                android:layout_height="26dp"
-                tools:layout_editor_absoluteX="2dp"
-                tools:layout_editor_absoluteY="275dp" />
-
-            <TextView
-                android:id="@+id/textView24"
-                android:layout_width="414dp"
-                android:layout_height="37dp"
-                android:text="@string/Filtrar"
-                android:textColor="#000000"
-                android:textSize="27sp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="13dp"
-                tools:layout_editor_absoluteY="16dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
             <Button
                 android:id="@+id/date_picker_button5"
                 android:layout_width="135dp"
                 android:layout_height="0dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="42dp"
                 android:backgroundTint="#CAC0C0"
                 android:onClick="showDatePickerDialog"
                 android:text="día/mes/año"
                 android:textAllCaps="false"
                 android:textColor="#0C0C0C"
-                tools:layout_editor_absoluteX="13dp"
-                tools:layout_editor_absoluteY="130dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+            <Button
+                android:id="@+id/date_picker_button6"
+                android:layout_width="135dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="104dp"
+                android:backgroundTint="#CAC0C0"
+                android:onClick="showDatePickerDialog"
+                android:text="día/mes/año"
+                android:textAllCaps="false"
+                android:textColor="#0C0C0C"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="196dp"
+                android:text="@string/hasta"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+            <SeekBar
+                android:id="@+id/barraImporte"
+                style="@style/Widget.AppCompat.SeekBar"
+                android:layout_width="392dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="12dp"
+                android:progressTint="#8CC846"
+                android:thumbTint="#8CC846"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/importeActual" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

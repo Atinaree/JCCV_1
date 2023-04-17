@@ -1,6 +1,4 @@
-package com.example.jccv_1.model
-
-import com.google.gson.annotations.SerializedName
+package com.example.jccv_1.main_model
 
 data class Facturas(
 
