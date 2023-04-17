@@ -14,10 +14,6 @@ class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
      var facturasList = ArrayList<Facturas>()
      var isPopupOpen = false
 
-
-
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.itemfactura, parent, false)
         return ViewHolder(view)
