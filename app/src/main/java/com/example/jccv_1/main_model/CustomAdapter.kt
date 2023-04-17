@@ -55,36 +55,8 @@ class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    fun filtrarPorEstado(estado: String) {
-        val facturasFiltradas = ArrayList<Facturas>()
-        for (factura in facturasList) {
-            if (factura.descEstado == estado) {
-                facturasFiltradas.add(factura)
-            }
-        }
-        setData(facturasFiltradas)
 
-    }
 
-    fun filtrarPorFecha(fecha: String) {
-        val facturasFiltradas = ArrayList<Facturas>()
-        for (factura in facturasList) {
-            if (factura.fecha == fecha) {
-                facturasFiltradas.add(factura)
-            }
-        }
-        setData(facturasFiltradas)
-    }
-
-    fun filtrarPorImporte(importe: Double) {
-        val facturasFiltradas = ArrayList<Facturas>()
-        for (factura in facturasList) {
-            if (factura.importeOrdenacion == importe) {
-                facturasFiltradas.add(factura)
-            }
-        }
-        setData(facturasFiltradas)
-    }
 
 
 }

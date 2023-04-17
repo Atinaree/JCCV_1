@@ -2,6 +2,7 @@ package com.example.jccv_1.secondary
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.LinearLayout
@@ -37,7 +38,7 @@ class SecondaryActivity : Activity() {
 
         adapter = CustomAdapter()
         botonaplicar.setOnClickListener {
-            adapter.filtrarPorImporte(12.84)
+
 
 
 
