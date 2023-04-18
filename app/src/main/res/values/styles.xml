@@ -8,6 +8,13 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <style name="datePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">#8CC846</item>
+        <item name="android:textSize">30sp</item>
+
+    </style>
+
+
 
 
 </resources>
