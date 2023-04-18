@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         }
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val adapter = CustomAdapter()
+
         val retrofit = Retrofit.Builder()
             .baseUrl("https://viewnextandroid.wiremockapi.cloud/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -55,7 +56,19 @@ class MainActivity : AppCompatActivity() {
                     override fun onFailure(call: Call<FactForm>, t: Throwable) {
                         // Manejar el error y mostrar un mensaje de error al usuario
                     }
+
+
                 })
+
+
+
+
+        }
+            override fun onResume() {
+                    super.onResume()
+
+
+
     }
 
 

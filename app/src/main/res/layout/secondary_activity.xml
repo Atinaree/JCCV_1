@@ -8,6 +8,21 @@
     tools:context=".main.MainActivity">
 
     <Button
+        android:id="@+id/button3"
+        style="@style/botonSinBordes"
+        android:layout_width="350dp"
+        android:layout_height="70dp"
+        android:backgroundTint="#00ACAAAA"
+        android:enabled="true"
+        android:text="Eliminar filtros"
+        android:textColor="#8CC846"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/button"
         android:layout_width="350dp"
         android:layout_height="70dp"
@@ -23,20 +38,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView1"
         tools:ignore="ExtraText" />
-
-    <Button
-        android:id="@+id/button3"
-        style="@style/botonSinBordes"
-        android:layout_width="350dp"
-        android:layout_height="70dp"
-        android:backgroundTint="#00ACAAAA"
-        android:text="Eliminar filtros"
-        android:textColor="#8CC846"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
         android:id="@+id/scrollView1"
