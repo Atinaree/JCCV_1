@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.*
+import androidx.core.view.size
 import com.example.jccv_1.R
 import com.example.jccv_1.databinding.SecondaryActivityBinding
 import com.example.jccv_1.main_model.CustomAdapter
