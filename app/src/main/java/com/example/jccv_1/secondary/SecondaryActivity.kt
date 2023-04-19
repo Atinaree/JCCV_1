@@ -1,13 +1,11 @@
 package com.example.jccv_1.secondary
-import android.annotation.SuppressLint
+
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.*
-import androidx.core.view.size
 import com.example.jccv_1.R
 import com.example.jccv_1.databinding.SecondaryActivityBinding
 import com.example.jccv_1.main_model.CustomAdapter
@@ -49,7 +47,6 @@ class SecondaryActivity : Activity() {
             val datePickerDialog = DatePickerDialog(
                 this,R.style.datePicker,
                 { _, year, month, dayOfMonth ->
-// Aquí puedes hacer algo con la fecha seleccionada, por ejemplo:
                     button1.text = "$year-${month+1}-$dayOfMonth"
                 },
                 year, month, day
@@ -68,7 +65,6 @@ class SecondaryActivity : Activity() {
             val datePickerDialog = DatePickerDialog(
                 this,R.style.datePicker,
                 { _, year, month, dayOfMonth ->
-// Aquí puedes hacer algo con la fecha seleccionada, por ejemplo:
                     button2.text = "$year-${month+1}-$dayOfMonth"
                 },
                 year, month, day
