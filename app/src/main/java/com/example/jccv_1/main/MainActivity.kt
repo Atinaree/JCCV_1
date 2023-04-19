@@ -18,11 +18,13 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private val adapter = CustomAdapter()
-    private var facturasList: ArrayList<Facturas> = ArrayList()
-    private var facturasListSaved: ArrayList<Facturas> = ArrayList()
-    private var isResumed = false
+     lateinit var binding: ActivityMainBinding
+     val adapter = CustomAdapter()
+     var facturasList: ArrayList<Facturas> = ArrayList()
+     var facturasListSaved: ArrayList<Facturas> = ArrayList()
+     private var isResumed = false
+    var second = SecondaryActivity()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +35,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SecondaryActivity::class.java)
             startActivity(intent)
         }
-
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
@@ -64,11 +65,23 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        if (isResumed) {
-            Toast.makeText(this, "hola", Toast.LENGTH_SHORT).show()
-            adapter.setData(facturasList)
-        }
 
+
+
+
+        var facturasFiltradas = facturasList // comienzas con la lista original
+
+        // primer filtro
+        facturasFiltradas = facturasFiltradas.filter { facturas -> facturas.descEstado == "Pagada" } as ArrayList<Facturas>
+
+        // segundo filtro
+        facturasFiltradas = facturasFiltradas.filter { facturas -> facturas.importeOrdenacion < 26 } as ArrayList<Facturas>
+
+
+
+        // y así sucesivamente para los demás filtros
+
+        adapter.setData(facturasFiltradas as ArrayList)
         isResumed = true
     }
 
@@ -77,3 +90,7 @@ class MainActivity : AppCompatActivity() {
 
 
 }
+
+
+
+

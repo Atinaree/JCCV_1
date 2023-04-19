@@ -18,6 +18,12 @@ class SecondaryActivity : Activity() {
     lateinit var itemfiltross: LinearLayout
     lateinit var botonaplicar: Button
     lateinit var adapter: CustomAdapter
+    private var fechaInicio: Date? = null
+    private var fechaFin: Date? = null
+
+
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,14 +53,15 @@ class SecondaryActivity : Activity() {
             val datePickerDialog = DatePickerDialog(
                 this,R.style.datePicker,
                 { _, year, month, dayOfMonth ->
-                    button1.text = "$year-${month+1}-$dayOfMonth"
+                    fechaInicio = cal.time
+                    button1.text = "$dayOfMonth-${month+1}-$year"
+
                 },
                 year, month, day
             )
             datePickerDialog.datePicker.maxDate = System.currentTimeMillis() //Evita seleccionar fecha posterior al día actual
             datePickerDialog.show()
         }
-
 //Botón Fecha Fin
         val button2 = item.findViewById<Button>(R.id.botonFechaFin)
         button2.setOnClickListener {
@@ -65,21 +72,24 @@ class SecondaryActivity : Activity() {
             val datePickerDialog = DatePickerDialog(
                 this,R.style.datePicker,
                 { _, year, month, dayOfMonth ->
-                    button2.text = "$year-${month+1}-$dayOfMonth"
+                    fechaFin = cal.time
+                    button2.text = "$dayOfMonth-${month+1}-$year"
+
                 },
                 year, month, day
             )
             val startDate = button1.text.toString() //Obtiene la fecha seleccionada en el primer Date Picker
-            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
             val date = sdf.parse(startDate)
+
             datePickerDialog.datePicker.minDate = date.time //Evita seleccionar fecha anterior a la seleccionada en el primer Date Picker
             datePickerDialog.show()
+
         }
 
 
 //Boton para cerrar la vista
         binding.buttonFilter.setOnClickListener {
-            val intent = Intent(this, SecondaryActivity::class.java)
             finish()
     }
 // Boton para quitar filtros
@@ -107,7 +117,9 @@ class SecondaryActivity : Activity() {
         botonaplicar = binding.button
         adapter = CustomAdapter()
         botonaplicar.setOnClickListener {
-            Toast.makeText(this, "2323", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, SecondaryActivity::class.java)
+
+            Toast.makeText(this, fechaInicio.toString(), Toast.LENGTH_SHORT).show()
         }
 
 
