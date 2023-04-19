@@ -4,28 +4,21 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jccv_1.R
 import com.example.jccv_1.databinding.ActivityMainBinding
 import com.example.jccv_1.main_model.*
-import com.example.jccv_1.secondary.SecondaryActivity
 import com.example.jccv_1.main_model.RetrofitAPI
+import com.example.jccv_1.secondary.SecondaryActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
-
      lateinit var binding: ActivityMainBinding
      val adapter = CustomAdapter()
      var facturasList: ArrayList<Facturas> = ArrayList()
-     var facturasListSaved: ArrayList<Facturas> = ArrayList()
-     private var isResumed = false
-    var second = SecondaryActivity()
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -48,8 +41,6 @@ class MainActivity : AppCompatActivity() {
                     if (factura != null) {
                         //Inicializamos la variable que cargara el recyclerView y le damos el contenido del retrofit
                         facturasList = factura.facturas as ArrayList<Facturas>
-                        //Inicializamos una variable para guardar una copia de la respuesta, pero que no modificaremos
-                        facturasListSaved = factura.facturas as ArrayList<Facturas>
                         adapter.setData(facturasList)
                     }
                 } else {
@@ -61,33 +52,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-
-    override fun onResume() {
-        super.onResume()
-
-
-
-
-
-        var facturasFiltradas = facturasList // comienzas con la lista original
-
-        // primer filtro
-        facturasFiltradas = facturasFiltradas.filter { facturas -> facturas.descEstado == "Pagada" } as ArrayList<Facturas>
-
-        // segundo filtro
-        facturasFiltradas = facturasFiltradas.filter { facturas -> facturas.importeOrdenacion < 26 } as ArrayList<Facturas>
-
-
-
-        // y así sucesivamente para los demás filtros
-
-        adapter.setData(facturasFiltradas as ArrayList)
-        isResumed = true
-    }
-
-
-
-
 
 }
 

@@ -1,7 +1,5 @@
 package com.example.jccv_1.secondary
-
 import android.app.Activity
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +7,7 @@ import android.widget.*
 import com.example.jccv_1.R
 import com.example.jccv_1.databinding.SecondaryActivityBinding
 import com.example.jccv_1.main_model.CustomAdapter
-import java.text.SimpleDateFormat
 import java.util.*
-
 
 class SecondaryActivity : Activity() {
     lateinit var binding: SecondaryActivityBinding
@@ -19,12 +15,6 @@ class SecondaryActivity : Activity() {
     lateinit var botonaplicar: Button
     lateinit var adapter: CustomAdapter
     private var fechaInicio: Date? = null
-    private var fechaFin: Date? = null
-
-
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Configuracion regional
@@ -43,56 +33,33 @@ class SecondaryActivity : Activity() {
         itemfiltross = binding.itemfiltross
         val item = inflater.inflate(R.layout.itemfiltross, null)
         itemfiltross.addView(item)
-//Botón Fecha Inicio
         val button1 = item.findViewById<Button>(R.id.botonFechaIni)
-        button1.setOnClickListener {
-            val cal = Calendar.getInstance()
-            val year = cal.get(Calendar.YEAR)
-            val month = cal.get(Calendar.MONTH)
-            val day = cal.get(Calendar.DAY_OF_MONTH)
-            val datePickerDialog = DatePickerDialog(
-                this,R.style.datePicker,
-                { _, year, month, dayOfMonth ->
-                    fechaInicio = cal.time
-                    button1.text = "$dayOfMonth-${month+1}-$year"
-
-                },
-                year, month, day
-            )
-            datePickerDialog.datePicker.maxDate = System.currentTimeMillis() //Evita seleccionar fecha posterior al día actual
-            datePickerDialog.show()
-        }
-//Botón Fecha Fin
         val button2 = item.findViewById<Button>(R.id.botonFechaFin)
+        DatePickerManager(button1)
+        DatePickerManager(button2)
+
+        // Crear un DatePickerManager para el botón 1
+        val datePickerManager1 = DatePickerManager(button1)
+
+        // Crear un DatePickerManager para el botón 2
+        val datePickerManager2 = DatePickerManager(button2)
+
+
+// Establecer la fecha mínima para el DatePicker del botón 2 como la fecha seleccionada en el botón 1
         button2.setOnClickListener {
-            val cal = Calendar.getInstance()
-            val year = cal.get(Calendar.YEAR)
-            val month = cal.get(Calendar.MONTH)
-            val day = cal.get(Calendar.DAY_OF_MONTH)
-            val datePickerDialog = DatePickerDialog(
-                this,R.style.datePicker,
-                { _, year, month, dayOfMonth ->
-                    fechaFin = cal.time
-                    button2.text = "$dayOfMonth-${month+1}-$year"
-
-                },
-                year, month, day
-            )
-            val startDate = button1.text.toString() //Obtiene la fecha seleccionada en el primer Date Picker
-            val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-            val date = sdf.parse(startDate)
-
-            datePickerDialog.datePicker.minDate = date.time //Evita seleccionar fecha anterior a la seleccionada en el primer Date Picker
-            datePickerDialog.show()
-
+            val minDate = datePickerManager1.getDate() // Obtener la fecha seleccionada en el botón 1
+            if (minDate != null ) {
+                datePickerManager2.setMinDate(minDate) // Establecer la fecha mínima para el DatePicker del botón 2
+            }
         }
 
 
-//Boton para cerrar la vista
+        //Boton para cerrar la vista
         binding.buttonFilter.setOnClickListener {
             finish()
-    }
-// Boton para quitar filtros
+        }
+
+        // Boton para quitar filtros
         binding.button3.setOnClickListener {
 
             button1.text = "dia/mes/año"
@@ -113,15 +80,15 @@ class SecondaryActivity : Activity() {
             checkBox5.isChecked = false
 
         }
+
         //Boton aplicar
         botonaplicar = binding.button
         adapter = CustomAdapter()
         botonaplicar.setOnClickListener {
             val intent = Intent(this, SecondaryActivity::class.java)
 
-            Toast.makeText(this, fechaInicio.toString(), Toast.LENGTH_SHORT).show()
+
         }
 
-
-
-}}
+    }
+}
