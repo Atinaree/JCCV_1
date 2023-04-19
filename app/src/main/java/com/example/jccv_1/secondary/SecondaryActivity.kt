@@ -15,6 +15,7 @@ class SecondaryActivity : Activity() {
     lateinit var botonaplicar: Button
     lateinit var adapter: CustomAdapter
     private var fechaInicio: Date? = null
+    lateinit var hola: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Configuracion regional
