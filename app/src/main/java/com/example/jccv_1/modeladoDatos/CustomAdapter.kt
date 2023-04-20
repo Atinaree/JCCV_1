@@ -1,4 +1,4 @@
-package com.example.jccv_1.main_model
+package com.example.jccv_1.modeladoDatos
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.PopupWindow
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jccv_1.R
 

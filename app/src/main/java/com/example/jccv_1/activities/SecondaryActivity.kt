@@ -1,4 +1,4 @@
-package com.example.jccv_1.secondary
+package com.example.jccv_1.activities
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,8 @@ import android.view.LayoutInflater
 import android.widget.*
 import com.example.jccv_1.R
 import com.example.jccv_1.databinding.SecondaryActivityBinding
-import com.example.jccv_1.main_model.CustomAdapter
+import com.example.jccv_1.modeladoDatos.CustomAdapter
+import com.example.jccv_1.secondary.DatePickerManager
 import java.util.*
 
 class SecondaryActivity : Activity() {
@@ -14,8 +15,7 @@ class SecondaryActivity : Activity() {
     lateinit var itemfiltross: LinearLayout
     lateinit var botonaplicar: Button
     lateinit var adapter: CustomAdapter
-    private var fechaInicio: Date? = null
-    lateinit var hola: String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Configuracion regional

@@ -1,4 +1,4 @@
-package com.example.jccv_1.main_model
+package com.example.jccv_1.red
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
