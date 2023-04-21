@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
      var facturasList: ArrayList<Facturas> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        val retrofitToRoom = RetrofitToRoom(application)
 
 
 
@@ -40,11 +40,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SecondaryActivity::class.java)
             startActivity(intent)
 
-        lifecycleScope.launch {
-            val facturas = room.facturaDAO().getALL()
-            Log.d("prueba","onCreate: ${facturas.size} facturas")
-
-                    }
         }
 
            val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
@@ -60,6 +55,11 @@ class MainActivity : AppCompatActivity() {
                            //Inicializamos la variable que cargara el recyclerView y le damos el contenido del retrofit
                            facturasList = factura.facturas as ArrayList<Facturas>
                            adapter.setData(facturasList)
+                           lifecycleScope.launch {
+                               withContext(Dispatchers.IO) {
+                                   retrofitToRoom.getMyData()
+                               }
+                           }
                        }
                    } else {
                        // Manejar el error y mostrar un mensaje de error al usuario
