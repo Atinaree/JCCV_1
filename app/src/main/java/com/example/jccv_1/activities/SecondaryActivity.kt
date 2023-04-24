@@ -13,6 +13,7 @@ import com.example.jccv_1.modeladoDatos.CustomAdapter
 import com.example.jccv_1.modeladoDatos.Facturas
 import com.example.jccv_1.secondary.DatePickerManager
 import kotlinx.coroutines.*
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -26,7 +27,7 @@ class SecondaryActivity : Activity() {
     val dataDao: facturaDAO = facturasAPP.room.facturaDAO()
     companion object{
         const val fecha = "fechaini"
-        const val fecha2 = "fechafin"
+
         const val importe = "importe"
         const val pagadas = "pagadas"
         const val anuladas = "anuladas"
@@ -110,8 +111,12 @@ class SecondaryActivity : Activity() {
 
             fechaInicial = fecha1.text.toString()
             fechaFinal = fecha22.text.toString()
-            var filtrofecha = dataDao.getALL().filter { facturas: Facturas -> facturas.fecha >= fechaInicial && facturas.fecha <= fechaFinal }
-Log.d("grey", filtrofecha.toString())
+            val sdf = SimpleDateFormat("dd/MM/yyyy")
+            val firstDate: Date = sdf.parse(fechaInicial)
+            val secondDate: Date = sdf.parse(fechaFinal)
+            var filtrofecha = dataDao.getALL().filter { factura: Facturas -> sdf.parse(factura.fecha) >= firstDate && sdf.parse(factura.fecha) <= secondDate}
+
+
             //Evaluar los checkbox
             var filtroPagadas = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Pagada" }
             var filtroAnuladas = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Anuladas" }
@@ -120,8 +125,8 @@ Log.d("grey", filtrofecha.toString())
             var filtroPlan = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Plan de pago" }
 
 
-            intent.putExtra(fecha, "pepitoo")
-            intent.putExtra(fecha2, "2")
+            intent.putExtra(fecha, filtrofecha.toString())
+
             intent.putExtra(importe, "3")
             if (checkBox1.isChecked)
                 intent.putExtra(pagadas, filtroPagadas.toString())

@@ -16,7 +16,6 @@ import com.example.jccv_1.activities.SecondaryActivity.Companion.anuladas
 import com.example.jccv_1.activities.SecondaryActivity.Companion.cfija
 
 import com.example.jccv_1.activities.SecondaryActivity.Companion.fecha
-import com.example.jccv_1.activities.SecondaryActivity.Companion.fecha2
 import com.example.jccv_1.activities.SecondaryActivity.Companion.importe
 import com.example.jccv_1.activities.SecondaryActivity.Companion.pagadas
 import com.example.jccv_1.activities.SecondaryActivity.Companion.pendientes
@@ -37,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         if(activityResult.resultCode == RESULT_OK){
 
             val fecha1 = activityResult.data?.getStringExtra(fecha).orEmpty()
-            val fecha2 = activityResult.data?.getStringExtra(fecha2).orEmpty()
             val importe = activityResult.data?.getStringExtra(importe).orEmpty()
             val pagadas = activityResult.data?.getStringExtra(pagadas).orEmpty()
             val anuladas = activityResult.data?.getStringExtra(anuladas).orEmpty()
@@ -48,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-            Log.d("hii",pagadas + pendientes)
+
 
 
 
