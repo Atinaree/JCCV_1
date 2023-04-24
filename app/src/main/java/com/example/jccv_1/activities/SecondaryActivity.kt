@@ -2,6 +2,7 @@ package com.example.jccv_1.activities
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.*
 import com.example.jccv_1.R
@@ -11,16 +12,17 @@ import com.example.jccv_1.databinding.SecondaryActivityBinding
 import com.example.jccv_1.modeladoDatos.CustomAdapter
 import com.example.jccv_1.modeladoDatos.Facturas
 import com.example.jccv_1.secondary.DatePickerManager
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import java.util.*
+import kotlin.collections.ArrayList
+
 class SecondaryActivity : Activity() {
     lateinit var binding: SecondaryActivityBinding
     lateinit var itemfiltross: LinearLayout
     lateinit var botonaplicar: Button
     lateinit var adapter: CustomAdapter
+    lateinit var fechaInicial: String
+    lateinit var fechaFinal: String
     val dataDao: facturaDAO = facturasAPP.room.facturaDAO()
     companion object{
         const val fecha = "fechaini"
@@ -31,7 +33,6 @@ class SecondaryActivity : Activity() {
         const val cfija = "cfija"
         const val pendientes = "pendientes"
         const val plan = "plan"
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,17 +91,15 @@ class SecondaryActivity : Activity() {
         adapter = CustomAdapter()
 
         botonaplicar.setOnClickListener {
-                       aplicarFiltros()
-
-
-
-
+            GlobalScope.launch {
+                aplicarFiltros()
+            }
         }
-
     }
      suspend fun aplicarFiltros() {
-
         withContext(Dispatchers.IO) {
+            val fecha1 = findViewById<Button>(R.id.botonFechaIni)
+            val fecha22 = findViewById<Button>(R.id.botonFechaFin)
             val slider = findViewById<SeekBar>(R.id.barraImporte)
             val checkBox1 = findViewById<CheckBox>(R.id.chPagada)
             val checkBox2 = findViewById<CheckBox>(R.id.chAnulada)
@@ -109,10 +108,15 @@ class SecondaryActivity : Activity() {
             val checkBox5 = findViewById<CheckBox>(R.id.chPlan)
             val intent = Intent()
 
-            var filtroPagadas = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Pagadas" }
+            fechaInicial = fecha1.text.toString()
+            fechaFinal = fecha22.text.toString()
+            var filtrofecha = dataDao.getALL().filter { facturas: Facturas -> facturas.fecha >= fechaInicial && facturas.fecha <= fechaFinal }
+Log.d("grey", filtrofecha.toString())
+            //Evaluar los checkbox
+            var filtroPagadas = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Pagada" }
             var filtroAnuladas = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Anuladas" }
             var filtroCfija = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Cuota Fija" }
-            var filtroPendientes = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Pendientes de pago" }
+            var filtroPendientes = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Pendiente de pago" }
             var filtroPlan = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Plan de pago" }
 
 
@@ -129,7 +133,6 @@ class SecondaryActivity : Activity() {
                 intent.putExtra(pendientes, filtroPendientes.toString())
             if (checkBox5.isChecked)
                 intent.putExtra(plan, filtroPlan.toString())
-
 
             setResult(RESULT_OK, intent)
             finish()

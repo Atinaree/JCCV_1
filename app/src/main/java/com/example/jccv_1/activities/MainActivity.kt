@@ -48,9 +48,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-            Toast.makeText(this, pagadas, Toast.LENGTH_SHORT).show()
-
-    Log.d("hii",pagadas)
+            Log.d("hii",pagadas + pendientes)
 
 
 

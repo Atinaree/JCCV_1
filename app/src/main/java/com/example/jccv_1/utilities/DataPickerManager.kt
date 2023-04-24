@@ -2,6 +2,7 @@ package com.example.jccv_1.secondary
 import android.app.DatePickerDialog
 import android.widget.Button
 import android.widget.DatePicker
+import com.example.jccv_1.activities.SecondaryActivity
 import java.text.SimpleDateFormat
 import java.util.*
 class DatePickerManager(private val button: Button, private val minDate: Long? = null) :
@@ -25,6 +26,7 @@ class DatePickerManager(private val button: Button, private val minDate: Long? =
             set(Calendar.DAY_OF_MONTH, dayOfMonth)
         }
         button.text = dateFormatter.format(calendar.time)
+
     }
     private fun showDatePickerDialog() {
         val currentDate = getDate() ?: Calendar.getInstance().time
