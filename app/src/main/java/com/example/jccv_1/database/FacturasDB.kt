@@ -8,11 +8,6 @@ import com.example.jccv_1.modeladoDatos.Facturas
     entities = [Facturas::class],
     version = 1
 )
-
 abstract class FacturasDB : RoomDatabase() {
-
     abstract fun facturaDAO(): facturaDAO
-
-
-
 }

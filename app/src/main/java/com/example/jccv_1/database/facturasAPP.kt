@@ -5,10 +5,8 @@ class facturasAPP : Application() {
     companion object {
         lateinit var room: FacturasDB
     }
-
     override fun onCreate() {
         super.onCreate()
-
         room = Room.databaseBuilder(applicationContext, FacturasDB::class.java, "facturas")
             .fallbackToDestructiveMigration()
             .build()

@@ -7,18 +7,17 @@ import com.example.jccv_1.modeladoDatos.Facturas
 
 @Dao
 interface facturaDAO {
-
     @Insert
     fun insert(facturas: List<Facturas>)
-
     @Query("SELECT * FROM facturas WHERE id = :id")
-    suspend fun getById(id: Int): Facturas
-
+    fun getById(id: Int): Facturas
     @Query("SELECT * FROM facturas")
-    suspend fun getALL(): List<Facturas>
-
+    fun getALL(): List<Facturas>
     @Query("SELECT * FROM facturas WHERE fecha = :fecha")
-    suspend fun getByFecha(fecha: String): Facturas
+    fun getByFecha(fecha: String): Facturas
+    @Query("DELETE FROM facturas")
+    suspend fun eliminar()
+
 
 
 

@@ -1,5 +1,4 @@
 package com.example.jccv_1.activities
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,11 +14,10 @@ import com.example.jccv_1.modeladoDatos.Facturas
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
     private val adapter = CustomAdapter()
+    private var currentList = ArrayList<Facturas>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,16 +29,34 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SecondaryActivity::class.java)
             startActivity(intent)
         }
-
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
 
         lifecycleScope.launch {
             val myDataList = withContext(Dispatchers.IO) {
                 retrofitToRoom.getMyData()
             }
             adapter.setData(myDataList as ArrayList<Facturas>)
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val retrofitToRoom = RetrofitToRoom(application)
+        lifecycleScope.launch {
+            val newMyDataList = withContext(Dispatchers.IO) {
+                retrofitToRoom.getMyData()
+
+            }
+
+            newMyDataList.filter { facturas: Facturas -> facturas.descEstado == "Pagada" }
+
+            adapter.setData(newMyDataList as ArrayList<Facturas>)
+            Log.d("jirafa",newMyDataList.toString())
+            currentList = newMyDataList as ArrayList<Facturas>
         }
     }
 }
