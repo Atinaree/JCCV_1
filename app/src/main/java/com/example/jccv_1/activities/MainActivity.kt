@@ -3,16 +3,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.Toast
-import kotlin.collections.distinct
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.contract.ActivityResultContracts.*
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jccv_1.R
@@ -28,12 +22,13 @@ import com.example.jccv_1.database.facturaDAO
 import com.example.jccv_1.database.facturasAPP
 import com.example.jccv_1.red.RetrofitToRoom
 import com.example.jccv_1.databinding.ActivityMainBinding
-import com.example.jccv_1.databinding.SecondaryActivityBinding
 import com.example.jccv_1.modeladoDatos.CustomAdapter
 import com.example.jccv_1.modeladoDatos.Facturas
 import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
-import kotlin.concurrent.thread
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -113,6 +108,7 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch {
             var fecha1 = fechaini
             var fecha2 = fechafin
+
             var filtroPagadas = dataDao.getALL()
                 .filter { facturas: Facturas -> facturas.descEstado == "Pagada" }
             var filtroAnuladas = dataDao.getALL()
@@ -123,35 +119,39 @@ class MainActivity : AppCompatActivity() {
                 .filter { facturas: Facturas -> facturas.descEstado == "Pendiente de pago" }
             var filtroPlan = dataDao.getALL()
                 .filter { facturas: Facturas -> facturas.descEstado == "Plan de pago" }
+
+            // Trozo filtro por fecha
             val sdf = SimpleDateFormat("dd/MM/yyyy")
-            var filtrofecha = dataDao.getALL().filter { factura: Facturas -> sdf.parse(factura.fecha) >= sdf.parse(fecha1) && sdf.parse(factura.fecha) <= sdf.parse(fecha2)}
-            Log.d("haha",pagadass)
+            var inicial = emptyList<Facturas>()
+            var final = emptyList<Facturas>()
+            Log.d("ffffff",fechaini.toString())
+            if (fechaini =="día/mes/año"){
+                }
+                else
+                {
+                    inicial = dataDao.getALL().filter { factura: Facturas -> sdf.parse(factura.fecha) >= sdf.parse(fecha1)}
+                }
+            if (fechafin =="día/mes/año"){
+                }
+                else {
+                final = dataDao.getALL().filter { factura: Facturas -> sdf.parse(factura.fecha) <= sdf.parse(fecha2)}
+                }
+            var filtrofecha = inicial.intersect(final).toList()
 
-            val butt1 = findViewById<Button>(R.id.botonFechaIni)
-            val butt2 = findViewById<Button>(R.id.botonFechaFin)
-            if (butt1.text == "dia/mes/año" || butt2.text == "dia/mes/año" ){
-
-
-            } else{
-
-                var lista = filtrofecha
-                viewModel.getFacturas(lista)
-            }
-
-
-
-
-
-
+            var lista = filtrofecha
 
 
 
 
 
+
+
+
+
+
+            viewModel.getFacturas(lista)
 
         }
-
-
     }
 }
 

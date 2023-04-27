@@ -60,18 +60,6 @@ class SecondaryActivity : Activity() {
 
         DatePickerDesde(button1)
         DatePickerHasta(button2)
-        // Crear un DatePickerManager para el botón 1
-        val datePickerManager1 = DatePickerDesde(button1)
-        // Crear un DatePickerManager para el botón 2
-        val datePickerManager2 = DatePickerHasta(button2)
-// Establecer la fecha mínima para el DatePicker del botón 2 como la fecha seleccionada en el botón 1
-        button2.setOnClickListener {
-            val minDate =
-                datePickerManager1.getDate() // Obtener la fecha seleccionada en el botón 1
-            if (minDate != null) {
-                datePickerManager2.setMinDate(minDate) // Establecer la fecha mínima para el DatePicker del botón 2
-            }
-        }
 
 
         //Boton para cerrar la vista
@@ -104,21 +92,19 @@ class SecondaryActivity : Activity() {
                 aplicarFiltros()
             }
         }
-
         val barra = findViewById<SeekBar>(R.id.barraImporte)
-        val maximo = ceil(importeSl).toInt()// Valor máximo deseado para la seekbar
+        val maximo = ceil(importeSl).toInt()
         barra.max = maximo // Establecer el valor máximo a la seekbar
         barra.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 // Aquí se ejecutará el código cuando el valor de la seekbar cambie
-                // Puedes usar la variable progress para obtener el valor actual de la seekbar
 
                 val importeActual = item.findViewById<TextView>(R.id.importeActual)
                 importeActual.setText(progress.toString())
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
-                // Aquí se ejecutará el código cuando el usuario toque la seekbar
+
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
