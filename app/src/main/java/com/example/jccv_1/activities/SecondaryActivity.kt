@@ -13,6 +13,7 @@ import com.example.jccv_1.modeladoDatos.CustomAdapter
 import com.example.jccv_1.modeladoDatos.Facturas
 import com.example.jccv_1.secondary.DatePickerManager
 import kotlinx.coroutines.*
+import java.lang.Math.ceil
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -24,10 +25,13 @@ class SecondaryActivity : Activity() {
     lateinit var adapter: CustomAdapter
     lateinit var fechaInicial: String
     lateinit var fechaFinal: String
+    lateinit var importeSeleccionado: String
     val dataDao: facturaDAO = facturasAPP.room.facturaDAO()
+
+
     companion object{
         const val fecha = "fechaini"
-
+        const val fecha2 = "fechafin"
         const val importe = "importe"
         const val pagadas = "pagadas"
         const val anuladas = "anuladas"
@@ -53,6 +57,13 @@ class SecondaryActivity : Activity() {
         itemfiltross.addView(item)
         val button1 = item.findViewById<Button>(R.id.botonFechaIni)
         val button2 = item.findViewById<Button>(R.id.botonFechaFin)
+        val importe = item.findViewById<TextView>(R.id.importeMAX)
+
+        val importeSl = intent.getDoubleExtra("importeSl", 0.0)
+        importe.text = ceil(importeSl).toInt().toString() + "€"
+
+        Log.d("aaaa", importe.text.toString())
+
         DatePickerManager(button1)
         DatePickerManager(button2)
         // Crear un DatePickerManager para el botón 1
@@ -61,11 +72,14 @@ class SecondaryActivity : Activity() {
         val datePickerManager2 = DatePickerManager(button2)
 // Establecer la fecha mínima para el DatePicker del botón 2 como la fecha seleccionada en el botón 1
         button2.setOnClickListener {
-            val minDate = datePickerManager1.getDate() // Obtener la fecha seleccionada en el botón 1
-            if (minDate != null ) {
+            val minDate =
+                datePickerManager1.getDate() // Obtener la fecha seleccionada en el botón 1
+            if (minDate != null) {
                 datePickerManager2.setMinDate(minDate) // Establecer la fecha mínima para el DatePicker del botón 2
             }
         }
+
+
         //Boton para cerrar la vista
         binding.buttonFilter.setOnClickListener {
             finish()
@@ -96,7 +110,34 @@ class SecondaryActivity : Activity() {
                 aplicarFiltros()
             }
         }
+
+        val barra = findViewById<SeekBar>(R.id.barraImporte)
+        val maximo = ceil(importeSl).toInt()// Valor máximo deseado para la seekbar
+        barra.max = maximo // Establecer el valor máximo a la seekbar
+        barra.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                // Aquí se ejecutará el código cuando el valor de la seekbar cambie
+                // Puedes usar la variable progress para obtener el valor actual de la seekbar
+
+                val importeActual = item.findViewById<TextView>(R.id.importeActual)
+                importeActual.setText(progress.toString())
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // Aquí se ejecutará el código cuando el usuario toque la seekbar
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                importeSeleccionado = barra.progress.toString()
+            }
+        })
+
+
+
     }
+
+
+
      suspend fun aplicarFiltros() {
         withContext(Dispatchers.IO) {
             val fecha1 = findViewById<Button>(R.id.botonFechaIni)
@@ -108,38 +149,25 @@ class SecondaryActivity : Activity() {
             val checkBox4 = findViewById<CheckBox>(R.id.chPendientes)
             val checkBox5 = findViewById<CheckBox>(R.id.chPlan)
             val intent = Intent()
-
             fechaInicial = fecha1.text.toString()
             fechaFinal = fecha22.text.toString()
-            val sdf = SimpleDateFormat("dd/MM/yyyy")
-            val firstDate: Date = sdf.parse(fechaInicial)
-            val secondDate: Date = sdf.parse(fechaFinal)
-            var filtrofecha = dataDao.getALL().filter { factura: Facturas -> sdf.parse(factura.fecha) >= firstDate && sdf.parse(factura.fecha) <= secondDate}
 
-
-            //Evaluar los checkbox
-            var filtroPagadas = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Pagada" }
-            var filtroAnuladas = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Anuladas" }
-            var filtroCfija = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Cuota Fija" }
-            var filtroPendientes = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Pendiente de pago" }
-            var filtroPlan = dataDao.getALL().filter { facturas: Facturas -> facturas.descEstado == "Plan de pago" }
-
-
-            intent.putExtra(fecha, filtrofecha.toString())
-
-            intent.putExtra(importe, "3")
+            intent.putExtra(fecha, fechaInicial)
+            intent.putExtra(fecha2, fechaFinal)
+            intent.putExtra(importe, importeSeleccionado)
             if (checkBox1.isChecked)
-                intent.putExtra(pagadas, filtroPagadas.toString())
+                intent.putExtra(pagadas, "y")
             if (checkBox2.isChecked)
-                intent.putExtra(anuladas, filtroAnuladas.toString())
+                intent.putExtra(anuladas, "y")
             if (checkBox3.isChecked)
-                intent.putExtra(cfija, filtroCfija.toString())
+                intent.putExtra(cfija, "y")
             if (checkBox4.isChecked)
-                intent.putExtra(pendientes, filtroPendientes.toString())
+                intent.putExtra(pendientes, "y")
             if (checkBox5.isChecked)
-                intent.putExtra(plan, filtroPlan.toString())
+                intent.putExtra(plan, "y")
 
             setResult(RESULT_OK, intent)
+
             finish()
         }
     }

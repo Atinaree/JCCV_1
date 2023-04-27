@@ -12,7 +12,6 @@ import com.example.jccv_1.R
 class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
      var facturasList = ArrayList<Facturas>()
      var isPopupOpen = false
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.itemfactura, parent, false)
         return ViewHolder(view)
@@ -39,7 +38,6 @@ class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
                 popup.width = ViewGroup.LayoutParams.WRAP_CONTENT
                 popup.height = ViewGroup.LayoutParams.WRAP_CONTENT
                 popup.showAtLocation(popupView,1,0,0)
-
                 val closeButton = popupView.findViewById<Button>(R.id.close_button)
                 closeButton.setOnClickListener {
                     popup.dismiss()
@@ -53,9 +51,4 @@ class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
         facturasList = facturas
         notifyDataSetChanged()
     }
-
-
-
-
-
 }
