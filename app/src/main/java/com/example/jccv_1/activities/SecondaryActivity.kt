@@ -10,7 +10,8 @@ import com.example.jccv_1.database.facturaDAO
 import com.example.jccv_1.database.facturasAPP
 import com.example.jccv_1.databinding.SecondaryActivityBinding
 import com.example.jccv_1.modeladoDatos.CustomAdapter
-import com.example.jccv_1.secondary.DatePickerManager
+import com.example.jccv_1.secondary.DatePickerDesde
+import com.example.jccv_1.secondary.DatePickerHasta
 import kotlinx.coroutines.*
 import java.lang.Math.ceil
 import java.util.*
@@ -57,12 +58,12 @@ class SecondaryActivity : Activity() {
 
         Log.d("aaaa", importe.text.toString())
 
-        DatePickerManager(button1)
-        DatePickerManager(button2)
+        DatePickerDesde(button1)
+        DatePickerHasta(button2)
         // Crear un DatePickerManager para el botón 1
-        val datePickerManager1 = DatePickerManager(button1)
+        val datePickerManager1 = DatePickerDesde(button1)
         // Crear un DatePickerManager para el botón 2
-        val datePickerManager2 = DatePickerManager(button2)
+        val datePickerManager2 = DatePickerHasta(button2)
 // Establecer la fecha mínima para el DatePicker del botón 2 como la fecha seleccionada en el botón 1
         button2.setOnClickListener {
             val minDate =

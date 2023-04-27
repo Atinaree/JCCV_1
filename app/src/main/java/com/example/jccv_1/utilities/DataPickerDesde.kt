@@ -4,7 +4,7 @@ import android.widget.Button
 import android.widget.DatePicker
 import java.text.SimpleDateFormat
 import java.util.*
-class DatePickerManager(private val button: Button, private val minDate: Long? = null) :
+class DatePickerDesde(private val button: Button, private val minDate: Long? = null) :
 
     DatePickerDialog.OnDateSetListener {
     private val dateFormatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())

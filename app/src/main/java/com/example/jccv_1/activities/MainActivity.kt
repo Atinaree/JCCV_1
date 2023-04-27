@@ -129,13 +129,13 @@ class MainActivity : AppCompatActivity() {
 
             val butt1 = findViewById<Button>(R.id.botonFechaIni)
             val butt2 = findViewById<Button>(R.id.botonFechaFin)
-
             if (butt1.text == "dia/mes/año" || butt2.text == "dia/mes/año" ){
 
 
             } else{
 
                 var lista = filtrofecha
+                viewModel.getFacturas(lista)
             }
 
 
@@ -145,8 +145,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
-            var lista = filtroPagadas + filtroPendientes
-            viewModel.getFacturas(lista)
+
+
 
 
         }
