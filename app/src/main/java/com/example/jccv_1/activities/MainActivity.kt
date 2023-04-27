@@ -3,6 +3,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
 import kotlin.collections.distinct
 import androidx.activity.result.ActivityResultLauncher
@@ -27,6 +28,7 @@ import com.example.jccv_1.database.facturaDAO
 import com.example.jccv_1.database.facturasAPP
 import com.example.jccv_1.red.RetrofitToRoom
 import com.example.jccv_1.databinding.ActivityMainBinding
+import com.example.jccv_1.databinding.SecondaryActivityBinding
 import com.example.jccv_1.modeladoDatos.CustomAdapter
 import com.example.jccv_1.modeladoDatos.Facturas
 import kotlinx.coroutines.*
@@ -40,6 +42,11 @@ class MainActivity : AppCompatActivity() {
     val dataDao: facturaDAO = facturasAPP.room.facturaDAO()
     lateinit var fechaini: String
     lateinit var fechafin: String
+    lateinit var pagadass: String
+    lateinit var anuladass: String
+    lateinit var cfijass: String
+    lateinit var pendientess: String
+    lateinit var plans: String
     var importeSlider: Double = 0.0
 
 
@@ -53,11 +60,11 @@ class MainActivity : AppCompatActivity() {
                 fechafin = activityResult.data?.getStringExtra(fecha2).orEmpty()
                 var importe = activityResult.data?.getStringExtra(importe).orEmpty()
                 Log.d("hola",importe)
-                var pagadass = activityResult.data?.getStringExtra(pagadas).orEmpty()
-                var anuladass = activityResult.data?.getStringExtra(anuladas).orEmpty()
-                var cfijass = activityResult.data?.getStringExtra(cfija).orEmpty()
-                var pendientess = activityResult.data?.getStringExtra(pendientes).orEmpty()
-                var plans = activityResult.data?.getStringExtra(plan).orEmpty()
+                 pagadass = activityResult.data?.getStringExtra(pagadas).orEmpty()
+                 anuladass = activityResult.data?.getStringExtra(anuladas).orEmpty()
+                 cfijass = activityResult.data?.getStringExtra(cfija).orEmpty()
+                 pendientess = activityResult.data?.getStringExtra(pendientes).orEmpty()
+                 plans = activityResult.data?.getStringExtra(plan).orEmpty()
                 aplicarFiltros()
 
 
@@ -104,8 +111,8 @@ class MainActivity : AppCompatActivity() {
 
     fun aplicarFiltros() {
         GlobalScope.launch {
-            val fecha1 = fechaini
-            val fecha2 = fechafin
+            var fecha1 = fechaini
+            var fecha2 = fechafin
             var filtroPagadas = dataDao.getALL()
                 .filter { facturas: Facturas -> facturas.descEstado == "Pagada" }
             var filtroAnuladas = dataDao.getALL()
@@ -116,6 +123,26 @@ class MainActivity : AppCompatActivity() {
                 .filter { facturas: Facturas -> facturas.descEstado == "Pendiente de pago" }
             var filtroPlan = dataDao.getALL()
                 .filter { facturas: Facturas -> facturas.descEstado == "Plan de pago" }
+            val sdf = SimpleDateFormat("dd/MM/yyyy")
+            var filtrofecha = dataDao.getALL().filter { factura: Facturas -> sdf.parse(factura.fecha) >= sdf.parse(fecha1) && sdf.parse(factura.fecha) <= sdf.parse(fecha2)}
+            Log.d("haha",pagadass)
+
+            val butt1 = findViewById<Button>(R.id.botonFechaIni)
+            val butt2 = findViewById<Button>(R.id.botonFechaFin)
+
+            if (butt1.text == "dia/mes/año" || butt2.text == "dia/mes/año" ){
+
+
+            } else{
+
+                var lista = filtrofecha
+            }
+
+
+
+
+
+
 
 
             var lista = filtroPagadas + filtroPendientes

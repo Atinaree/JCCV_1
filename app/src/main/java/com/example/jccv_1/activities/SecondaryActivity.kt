@@ -10,14 +10,10 @@ import com.example.jccv_1.database.facturaDAO
 import com.example.jccv_1.database.facturasAPP
 import com.example.jccv_1.databinding.SecondaryActivityBinding
 import com.example.jccv_1.modeladoDatos.CustomAdapter
-import com.example.jccv_1.modeladoDatos.Facturas
 import com.example.jccv_1.secondary.DatePickerManager
 import kotlinx.coroutines.*
 import java.lang.Math.ceil
-import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
-
 class SecondaryActivity : Activity() {
     lateinit var binding: SecondaryActivityBinding
     lateinit var itemfiltross: LinearLayout
@@ -25,10 +21,8 @@ class SecondaryActivity : Activity() {
     lateinit var adapter: CustomAdapter
     lateinit var fechaInicial: String
     lateinit var fechaFinal: String
-    lateinit var importeSeleccionado: String
+    var importeSeleccionado = ""
     val dataDao: facturaDAO = facturasAPP.room.facturaDAO()
-
-
     companion object{
         const val fecha = "fechaini"
         const val fecha2 = "fechafin"
@@ -39,7 +33,6 @@ class SecondaryActivity : Activity() {
         const val pendientes = "pendientes"
         const val plan = "plan"
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         // Configuracion regional
         val locale = Locale("es")
@@ -129,6 +122,7 @@ class SecondaryActivity : Activity() {
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 importeSeleccionado = barra.progress.toString()
+
             }
         })
 
