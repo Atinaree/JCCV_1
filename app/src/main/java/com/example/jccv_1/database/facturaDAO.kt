@@ -1,10 +1,8 @@
 package com.example.jccv_1.database
-
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.jccv_1.modeladoDatos.Facturas
-
 @Dao
 interface facturaDAO {
     @Insert
@@ -17,9 +15,4 @@ interface facturaDAO {
     fun getByFecha(fecha: String): Facturas
     @Query("DELETE FROM facturas")
     suspend fun eliminar()
-
-
-
-
-
 }

@@ -52,16 +52,10 @@ class SecondaryActivity : Activity() {
         val button1 = item.findViewById<Button>(R.id.botonFechaIni)
         val button2 = item.findViewById<Button>(R.id.botonFechaFin)
         val importe = item.findViewById<TextView>(R.id.importeMAX)
-
         val importeSl = intent.getDoubleExtra("importeSl", 0.0)
         importe.text = ceil(importeSl).toInt().toString() + "€"
-
-        Log.d("aaaa", importe.text.toString())
-
         DatePickerDesde(button1)
         DatePickerHasta(button2)
-
-
         //Boton para cerrar la vista
         binding.buttonFilter.setOnClickListener {
             finish()
@@ -82,14 +76,11 @@ class SecondaryActivity : Activity() {
             checkBox3.isChecked = false
             checkBox4.isChecked = false
             checkBox5.isChecked = false
-
         }
         //Boton aplicar
         botonaplicar = binding.button
         adapter = CustomAdapter()
-
         botonaplicar.setOnClickListener {
-
             GlobalScope.launch {
                 aplicarFiltros()
             }
@@ -100,12 +91,10 @@ class SecondaryActivity : Activity() {
         barra.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 // Aquí se ejecutará el código cuando el valor de la seekbar cambie
-
                 val importeActual = item.findViewById<TextView>(R.id.importeActual)
                 importeActual.setText(progress.toString())
             }
             override fun onStartTrackingTouch(seekBar: SeekBar) {
-
             }
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 importeSeleccionado = barra.progress.toString()
@@ -139,13 +128,10 @@ class SecondaryActivity : Activity() {
                 intent.putExtra(pendientes, "Y")
             if (checkBox5.isChecked)
                 intent.putExtra(plan, "Y")
-
             setResult(RESULT_OK, intent)
-
             finish()
         }
     }
-
 }
 
 

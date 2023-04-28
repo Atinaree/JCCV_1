@@ -8,7 +8,6 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jccv_1.R
-
 class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
      var facturasList = ArrayList<Facturas>()
      var isPopupOpen = false
