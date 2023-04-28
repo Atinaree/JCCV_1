@@ -68,8 +68,8 @@ class SecondaryActivity : Activity() {
         }
         // Boton para quitar filtros
         binding.button3.setOnClickListener {
-            button1.text = "dia/mes/año"
-            button2.text = "dia/mes/año"
+            button1.text = "día/mes/año"
+            button2.text = "día/mes/año"
             val slider = findViewById<SeekBar>(R.id.barraImporte)
             val checkBox1 = findViewById<CheckBox>(R.id.chPagada)
             val checkBox2 = findViewById<CheckBox>(R.id.chAnulada)
@@ -82,12 +82,14 @@ class SecondaryActivity : Activity() {
             checkBox3.isChecked = false
             checkBox4.isChecked = false
             checkBox5.isChecked = false
+
         }
         //Boton aplicar
         botonaplicar = binding.button
         adapter = CustomAdapter()
 
         botonaplicar.setOnClickListener {
+
             GlobalScope.launch {
                 aplicarFiltros()
             }
@@ -102,23 +104,14 @@ class SecondaryActivity : Activity() {
                 val importeActual = item.findViewById<TextView>(R.id.importeActual)
                 importeActual.setText(progress.toString())
             }
-
             override fun onStartTrackingTouch(seekBar: SeekBar) {
 
             }
-
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 importeSeleccionado = barra.progress.toString()
-
             }
         })
-
-
-
     }
-
-
-
      suspend fun aplicarFiltros() {
         withContext(Dispatchers.IO) {
             val fecha1 = findViewById<Button>(R.id.botonFechaIni)
@@ -137,15 +130,15 @@ class SecondaryActivity : Activity() {
             intent.putExtra(fecha2, fechaFinal)
             intent.putExtra(importe, importeSeleccionado)
             if (checkBox1.isChecked)
-                intent.putExtra(pagadas, "y")
+                intent.putExtra(pagadas, "Y")
             if (checkBox2.isChecked)
-                intent.putExtra(anuladas, "y")
+                intent.putExtra(anuladas, "Y")
             if (checkBox3.isChecked)
-                intent.putExtra(cfija, "y")
+                intent.putExtra(cfija, "Y")
             if (checkBox4.isChecked)
-                intent.putExtra(pendientes, "y")
+                intent.putExtra(pendientes, "Y")
             if (checkBox5.isChecked)
-                intent.putExtra(plan, "y")
+                intent.putExtra(plan, "Y")
 
             setResult(RESULT_OK, intent)
 

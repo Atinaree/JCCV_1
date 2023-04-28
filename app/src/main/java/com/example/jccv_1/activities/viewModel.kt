@@ -5,9 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 import com.example.jccv_1.modeladoDatos.Facturas
-
-
-
 class MainViewModel(val Facturas: List<Facturas>): ViewModel() {
     val facturasLiveData = MutableLiveData<List<Facturas>>()
     fun getFacturas(list: List<Facturas>) {
