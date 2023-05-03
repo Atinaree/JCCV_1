@@ -139,6 +139,7 @@ class MainActivity : AppCompatActivity() {
                 lista = lista.filter { facturas: Facturas -> facturas.importeOrdenacion <=  importeSelec.toInt()}
                 Log.d("listafiltradaimporte", lista.toString())
             }
+
             viewModel.getFacturas(lista)
             lista = dataDao.getALL()
         }
