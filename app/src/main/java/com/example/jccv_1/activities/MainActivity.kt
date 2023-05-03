@@ -123,11 +123,14 @@ class MainActivity : AppCompatActivity() {
 
             // Trozo filtro por fecha
             val sdf = SimpleDateFormat("dd/MM/yyyy")
+            // Si hay 2 fechas
             if (fechaini != "día/mes/año" && fechafin != "día/mes/año") {
                 var inicial = lista.filter { factura: Facturas -> sdf.parse(factura.fecha) >= sdf.parse(fechaini) }
                 var final = lista.filter { factura: Facturas -> sdf.parse(factura.fecha) <= sdf.parse(fechafin) }
                 lista = inicial.intersect(final).toList()
+            //Si no hay fecha ( no filtra por aqui por lo que no hace nada)
             }else if (fechaini == "día/mes/año" && fechafin == "día/mes/año") {
+            //Si solo hay una fecha
             }else if (fechaini != "día/mes/año") {
                 lista = lista.filter { factura: Facturas -> sdf.parse(factura.fecha) >= sdf.parse(fechaini)}
             }else if (fechafin != "día/mes/año") {
@@ -135,7 +138,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             //Trozo filtro por importe
-            if (importeSelec != ""){
+            if (importeSelec != "0"){
                 lista = lista.filter { facturas: Facturas -> facturas.importeOrdenacion <=  importeSelec.toInt()}
                 Log.d("listafiltradaimporte", lista.toString())
             }
