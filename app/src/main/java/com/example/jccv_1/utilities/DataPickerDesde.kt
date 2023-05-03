@@ -1,11 +1,15 @@
 package com.example.jccv_1.secondary
+
 import android.app.DatePickerDialog
 import android.widget.Button
 import android.widget.DatePicker
 import java.text.SimpleDateFormat
 import java.util.*
-class DatePickerDesde(private val button: Button, private val minDate: Long? = null) :
-    DatePickerDialog.OnDateSetListener {
+
+class DatePickerDesde(
+    private val button: Button,
+    private val minDate: Long? = null,
+    private val maxDate: Long? = null) : DatePickerDialog.OnDateSetListener {
     private val dateFormatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     init {
         button.setOnClickListener { showDatePickerDialog() }
@@ -44,6 +48,9 @@ class DatePickerDesde(private val button: Button, private val minDate: Long? = n
         minDate?.let {
             dialog.datePicker.minDate = it
         }
+        maxDate?.let {
+            dialog.datePicker.maxDate = it
+        }
         // Limitar la fecha máxima permitida para selección en el DatePicker a hoy
         dialog.datePicker.maxDate = Calendar.getInstance().timeInMillis
         dialog.show()
@@ -62,14 +69,33 @@ class DatePickerDesde(private val button: Button, private val minDate: Long? = n
         }
         showDatePickerDialog(calendar.timeInMillis)
     }
-    private fun showDatePickerDialog(minDate: Long) {
+    fun setMaxDate(date: Date?) {
+        val calendar = Calendar.getInstance().apply {
+            time = date
+            set(Calendar.HOUR_OF_DAY, 0)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+        }
+        maxDate?.let {
+            if (calendar.timeInMillis < it) {
+                return
+            }
+        }
+        showDatePickerDialog(maxDate?.toLong())
+    }
+    private fun showDatePickerDialog(minDate: Long? = null, maxDate: Long? = null) {
         val dialog = DatePickerDialog(
             button.context,
             this,
             Calendar.getInstance().get(Calendar.YEAR),
             Calendar.getInstance().get(Calendar.MONTH),
             Calendar.getInstance().get(Calendar.DAY_OF_MONTH))
-        dialog.datePicker.minDate = minDate
+        minDate?.let {
+            dialog.datePicker.minDate = it
+        }
+        maxDate?.let {
+            dialog.datePicker.maxDate = it
+        }
         // Limitar la fecha máxima permitida para selección en el DatePicker a hoy
         dialog.datePicker.maxDate = Calendar.getInstance().timeInMillis
         dialog.show()

@@ -26,7 +26,7 @@ class DatePickerHasta(private val button: Button, private val minDate: Long? = n
         }
         button.text = dateFormatter.format(calendar.time)
     }
-    private fun showDatePickerDialog() {
+     fun showDatePickerDialog() {
         val currentDate = getDate() ?: Calendar.getInstance().time
         val calendar = Calendar.getInstance().apply {
             time = currentDate
@@ -62,7 +62,7 @@ class DatePickerHasta(private val button: Button, private val minDate: Long? = n
         }
         showDatePickerDialog(calendar.timeInMillis)
     }
-    private fun showDatePickerDialog(minDate: Long) {
+     fun showDatePickerDialog(minDate: Long) {
         val dialog = DatePickerDialog(
             button.context,
             this,
