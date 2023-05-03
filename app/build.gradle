@@ -70,4 +70,6 @@ dependencies {
 //Room
     implementation("androidx.room:room-ktx:2.5.1")
     kapt("androidx.room:room-compiler:2.5.1")
+//Retromock
+    implementation "co.infinum:retromock:1.1.0"
 }

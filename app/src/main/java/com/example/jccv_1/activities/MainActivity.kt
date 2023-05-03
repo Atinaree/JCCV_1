@@ -29,8 +29,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-
-
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val adapter = CustomAdapter()
@@ -64,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         val retrofitToRoom = RetrofitToRoom(application)
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -89,51 +88,56 @@ class MainActivity : AppCompatActivity() {
     }
     fun aplicarFiltros() {
         GlobalScope.launch {
+            //Cada vez que se aplica limpiamos la lista y la seteamos con todos
             lista = dataDao.getALL()
+
+            //Trozo filtro por check
+            var filtroPagadas = lista.filter { facturas: Facturas -> facturas.descEstado == "Pagada" }
+            var filtroAnuladas = lista.filter { facturas: Facturas -> facturas.descEstado == "Anuladas" }
+            var filtroCfija = lista.filter { facturas: Facturas -> facturas.descEstado == "Cuota Fija" }
+            var filtroPendientes = lista.filter { facturas: Facturas -> facturas.descEstado == "Pendiente de pago" }
+            var filtroPlan = lista.filter { facturas: Facturas -> facturas.descEstado == "Plan de pago" }
+
+            // Si alguno esta marcado, lista a vacio y carga lo que este marcado.
+            if ( pagadass == "Y" || pendientess == "Y" || anuladass == "Y" || cfijass == "Y" || plans == "Y") {
+                var listaf = emptyList<Facturas>()
+
+                if (pagadass == "Y") {
+                    listaf = filtroPagadas
+                }
+                if (pendientess == "Y") {
+                    listaf = listaf + filtroPendientes
+                }
+                if (anuladass == "Y") {
+                    listaf = listaf + filtroAnuladas
+                }
+                if (cfijass == "Y") {
+                    listaf = listaf + filtroCfija
+                }
+                if (plans == "Y") {
+                    listaf = listaf + filtroPlan
+                }
+                // Finalmente carga la lista y la ordena por fecha
+                lista = listaf.sortedBy { facturas: Facturas -> facturas.fecha }
+            }
+
             // Trozo filtro por fecha
             val sdf = SimpleDateFormat("dd/MM/yyyy")
             if (fechaini != "día/mes/año" && fechafin != "día/mes/año") {
-                var inicial = dataDao.getALL()
-                    .filter { factura: Facturas -> sdf.parse(factura.fecha) >= sdf.parse(fechaini) }
-                var final = dataDao.getALL()
-                    .filter { factura: Facturas -> sdf.parse(factura.fecha) <= sdf.parse(fechafin) }
+                var inicial = lista.filter { factura: Facturas -> sdf.parse(factura.fecha) >= sdf.parse(fechaini) }
+                var final = lista.filter { factura: Facturas -> sdf.parse(factura.fecha) <= sdf.parse(fechafin) }
                 lista = inicial.intersect(final).toList()
-
             }else if (fechaini == "día/mes/año" && fechafin == "día/mes/año") {
             }else if (fechaini != "día/mes/año") {
-                lista = dataDao.getALL()
-                    .filter { factura: Facturas -> sdf.parse(factura.fecha) >= sdf.parse(fechaini)}
+                lista = lista.filter { factura: Facturas -> sdf.parse(factura.fecha) >= sdf.parse(fechaini)}
             }else if (fechafin != "día/mes/año") {
-                lista = dataDao.getALL()
-                    .filter { factura: Facturas -> sdf.parse(factura.fecha) <= sdf.parse(fechafin)}
+                lista = lista.filter { factura: Facturas -> sdf.parse(factura.fecha) <= sdf.parse(fechafin)}
             }
+
+            //Trozo filtro por importe
             if (importeSelec != ""){
                 lista = lista.filter { facturas: Facturas -> facturas.importeOrdenacion <=  importeSelec.toInt()}
-            }
-            var filtroPagadas = lista
-                .filter { facturas: Facturas -> facturas.descEstado == "Pagada" }
-            var filtroAnuladas = lista
-                .filter { facturas: Facturas -> facturas.descEstado == "Anuladas" }
-            var filtroCfija = lista
-                .filter { facturas: Facturas -> facturas.descEstado == "Cuota Fija" }
-            var filtroPendientes = lista
-                .filter { facturas: Facturas -> facturas.descEstado == "Pendiente de pago" }
-            var filtroPlan = lista
-                .filter { facturas: Facturas -> facturas.descEstado == "Plan de pago" }
-            if (pagadass == "Y"){
-                lista = filtroPagadas
-            }
-            if (pendientess == "Y"){
-                lista += filtroPendientes
-            }
-            if (anuladass == "Y"){
-                lista += filtroAnuladas
-            }
-            if (cfijass == "Y"){
-                lista += filtroCfija
-            }
-            if (plans == "Y"){
-                lista += filtroPlan
+                Log.d("listafiltradaimporte", lista.toString())
             }
             viewModel.getFacturas(lista)
             lista = dataDao.getALL()
