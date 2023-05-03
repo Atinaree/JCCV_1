@@ -58,19 +58,14 @@ class SecondaryActivity : Activity() {
         DatePickerDesde(button1)
         DatePickerHasta(button2)
 
-
         button2.setOnClickListener(){
             if (button1.text.toString() != "día/mes/año"){
                 val sdf = SimpleDateFormat("dd/MM/yyyy")
                 DatePickerHasta(button2).setMinDate(sdf.parse(button1.text.toString()))
             } else{
                 DatePickerHasta(button2)
-
             }
-
         }
-
-
         //Boton para cerrar la vista
         binding.buttonFilter.setOnClickListener {
             finish()
