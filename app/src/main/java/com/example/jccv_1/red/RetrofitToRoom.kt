@@ -1,5 +1,7 @@
 package com.example.jccv_1.red
+
 import android.app.Application
+
 import com.example.jccv_1.database.facturaDAO
 import com.example.jccv_1.database.facturasAPP
 import com.example.jccv_1.modeladoDatos.FactForm
@@ -11,9 +13,11 @@ import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 class RetrofitToRoom(application: Application) {
-     val apiService: ApiService = RetrofitAPI.getApiService()
-     val dataDao: facturaDAO = facturasAPP.room.facturaDAO()
+    private val apiService: ApiService = RetrofitAPI.getApiService()
+    private val dataDao: facturaDAO = facturasAPP.room.facturaDAO()
+
     suspend fun getMyData(): List<Facturas> {
         return withContext(Dispatchers.IO) {
             apiService.getFacturas().enqueue(object : Callback<FactForm> {
@@ -30,6 +34,23 @@ class RetrofitToRoom(application: Application) {
                 }
             })
             dataDao.getALL()
+        }
+    }
+
+
+    private suspend fun fetchDataFromApi(): List<Facturas> = withContext(Dispatchers.IO) {
+        val response = apiService.getFacturas().execute()
+        if (response.isSuccessful) {
+            response.body()?.facturas ?: emptyList()
+        } else {
+            emptyList()
+        }
+    }
+
+    private suspend fun insertDataIntoDatabase(dataList: List<Facturas>) {
+        withContext(Dispatchers.IO) {
+            dataDao.eliminar()
+            dataDao.insert(dataList)
         }
     }
 }
