@@ -71,12 +71,13 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             // Obtener los datos de forma asíncrona en un hilo de entrada/salida
             val myDataList = withContext(Dispatchers.IO) {
+                Log.d("prueba", retrofitToRoom.getMyData().toString())
                 retrofitToRoom.getMyData()
             }
             // Ordenar la lista por importe de mayor a menor
             val sortedDataList =
                 myDataList.sortedByDescending { facturas -> facturas.importeOrdenacion }
-            // Obtener el importe de la primera factura en la lista ordenada
+           /// Obtener el importe de la primera factura en la lista ordenada
             importeSlider = sortedDataList.first().importeOrdenacion
             // Actualizar los datos del ViewModel y del adaptador
             viewModel.getFacturas(myDataList)
