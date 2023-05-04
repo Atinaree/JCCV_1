@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.*
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
@@ -57,6 +58,10 @@ class MainActivity : AppCompatActivity() {
                 pendientess = activityResult.data?.getStringExtra(pendientes).orEmpty()
                 plans = activityResult.data?.getStringExtra(plan).orEmpty()
                 aplicarFiltros()
+                val retrofitToRoom = RetrofitToRoom(application)
+                GlobalScope.launch {
+                    lista = retrofitToRoom.getMyData()
+                }
             }
         }
 
@@ -71,7 +76,6 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             // Obtener los datos de forma asíncrona en un hilo de entrada/salida
             val myDataList = withContext(Dispatchers.IO) {
-                Log.d("prueba", retrofitToRoom.getMyData().toString())
                 retrofitToRoom.getMyData()
             }
             // Ordenar la lista por importe de mayor a menor
@@ -93,7 +97,6 @@ class MainActivity : AppCompatActivity() {
             secondaryLauncher.launch(intent)
         }
     }
-
     fun aplicarFiltros() {
         GlobalScope.launch {
             //Cada vez que se aplica limpiamos la lista y la seteamos con todos

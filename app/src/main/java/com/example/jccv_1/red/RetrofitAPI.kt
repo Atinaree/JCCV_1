@@ -1,6 +1,11 @@
 package com.example.jccv_1.red
+
+import co.infinum.retromock.NonEmptyBodyFactory
+import co.infinum.retromock.Retromock
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
+
 object RetrofitAPI {
     private const val BASE_URL = "https://viewnextandroid2.wiremockapi.cloud/"
     private val retrofit = Retrofit.Builder()
@@ -10,4 +15,13 @@ object RetrofitAPI {
     fun getApiService(): ApiService {
         return retrofit.create(ApiService::class.java)
     }
+
+    var retromock = Retromock.Builder()
+        .retrofit(retrofit)
+        .build()
+
+    fun getMockService(): MockService {
+        return retromock.create(MockService::class.java)
+    }
+
 }
