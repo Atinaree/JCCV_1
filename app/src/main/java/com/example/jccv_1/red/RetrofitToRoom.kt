@@ -4,15 +4,12 @@ import android.app.Application
 import android.util.Log
 import com.example.jccv_1.database.facturaDAO
 import com.example.jccv_1.database.facturasAPP
-import com.example.jccv_1.modeladoDatos.FactForm
 import com.example.jccv_1.modeladoDatos.Facturas
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
 
 class RetrofitToRoom(application: Application) {
     private val apiService: ApiService = RetrofitAPI.getApiService()
@@ -26,7 +23,7 @@ class RetrofitToRoom(application: Application) {
 
                     apiService.getFacturas().execute()
 
-                } catch (e: Exception){
+                } catch (e: Exception) {
                     Log.d("holi", "entra por mocko")
 
                     mockService.geFacturasMock()?.execute()
