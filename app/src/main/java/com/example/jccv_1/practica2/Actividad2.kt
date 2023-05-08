@@ -16,10 +16,8 @@ class Actividad2 : AppCompatActivity() {
 
         binding = TabberBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setupTabLayout()
         setupViewPager()
-
         binding.button7.setOnClickListener(){
             finish()
         }
@@ -38,9 +36,6 @@ class Actividad2 : AppCompatActivity() {
             addTab(this.newTab().setText(R.string.first_fragment))
             addTab(this.newTab().setText(R.string.second_fragment))
             addTab(this.newTab().setText(R.string.third_fragment))
-
-
-            // tabGravity = TabLayout.GRAVITY_FILL
 
             addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
