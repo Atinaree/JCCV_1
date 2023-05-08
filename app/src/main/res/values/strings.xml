@@ -16,7 +16,16 @@
     <string name="CuotaFija">Cuota Fija</string>
     <string name="PendientesDePago">Pendientes de pago</string>
     <string name="PlanDePago">Plan de pago</string>
+    <string name="SmartSolar">Smart Solar</string>
+    <string name="Atras">Atras</string>
+    <string name="Practicas">Prácticas Android JCCV</string>
+    <string name="Practica1">Práctica 1</string>
+    <string name="Practica2">Práctica 2</string>
 
+
+    <string name="first_fragment">First Fragment</string>
+    <string name="second_fragment">Second Fragment</string>
+    <string name="third_fragment">Third Fragment</string>
 
 
 

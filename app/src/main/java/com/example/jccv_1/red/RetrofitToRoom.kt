@@ -44,5 +44,4 @@ class RetrofitToRoom(application: Application) {
             }
         }
     }
-
 }

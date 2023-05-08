@@ -1,0 +1,53 @@
+package com.example.jccv_1.practica2
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.example.jccv_1.databinding.TabberBinding
+import com.google.android.material.tabs.TabLayout
+
+
+class Actividad2 : AppCompatActivity() {
+
+    private lateinit var binding: TabberBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = TabberBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setupTabLayout()
+        setupViewPager()
+    }
+
+    private fun setupViewPager() {
+        binding.viewPager.apply {
+            adapter = ViewPagerAdapter(supportFragmentManager, binding.tabLayout.tabCount)
+            addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout))
+        }
+    }
+
+    private fun setupTabLayout() {
+        binding.tabLayout.apply {
+            addTab(this.newTab().setText("Tab 1"))
+            addTab(this.newTab().setText("Tab 2"))
+
+
+            // tabGravity = TabLayout.GRAVITY_FILL
+
+            addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    tab?.position?.let {
+                        binding.viewPager.currentItem = it
+                    }
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+                }
+
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+                }
+            })
+        }
+    }
+}
