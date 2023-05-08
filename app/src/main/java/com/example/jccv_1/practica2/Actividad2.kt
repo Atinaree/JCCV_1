@@ -2,6 +2,7 @@ package com.example.jccv_1.practica2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.jccv_1.R
 import com.example.jccv_1.databinding.TabberBinding
 import com.google.android.material.tabs.TabLayout
 
@@ -29,8 +30,9 @@ class Actividad2 : AppCompatActivity() {
 
     private fun setupTabLayout() {
         binding.tabLayout.apply {
-            addTab(this.newTab().setText("Tab 1"))
-            addTab(this.newTab().setText("Tab 2"))
+            addTab(this.newTab().setText(R.string.first_fragment))
+            addTab(this.newTab().setText(R.string.second_fragment))
+            addTab(this.newTab().setText(R.string.third_fragment))
 
 
             // tabGravity = TabLayout.GRAVITY_FILL

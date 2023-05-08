@@ -19,6 +19,6 @@ class FirstFragment : Fragment(R.layout.first_fragment) {
     }
     private fun setupData() {
         binding = FirstFragmentBinding.inflate(layoutInflater)
-        binding.label.text = getString(R.string.first_fragment)
+        binding.label.text = "Hola soy edu"
     }
 }

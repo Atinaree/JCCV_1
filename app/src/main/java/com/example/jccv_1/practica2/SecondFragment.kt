@@ -17,6 +17,6 @@ class SecondFragment : Fragment(R.layout.second_fragment) {
     }
     private fun setupData() {
         binding = SecondFragmentBinding.inflate(layoutInflater)
-        binding.label.text = "Second Frament"
+
     }
 }

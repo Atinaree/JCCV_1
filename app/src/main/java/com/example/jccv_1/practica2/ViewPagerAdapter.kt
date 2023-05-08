@@ -10,7 +10,7 @@ class ViewPagerAdapter(fm: FragmentManager, var tabCount: Int) : FragmentPagerAd
         return when (position) {
             0 -> FirstFragment()
             1 -> SecondFragment()
-
+            2 -> ThirdFragment()
             else -> FirstFragment()
         }
     }
