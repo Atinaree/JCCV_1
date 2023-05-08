@@ -96,6 +96,11 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("importeSl", importeSlider)
             secondaryLauncher.launch(intent)
         }
+
+        binding.button2.setOnClickListener(){
+            finish()
+            
+        }
     }
     fun aplicarFiltros() {
         GlobalScope.launch {

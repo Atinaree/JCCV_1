@@ -19,6 +19,11 @@ class Actividad2 : AppCompatActivity() {
 
         setupTabLayout()
         setupViewPager()
+
+        binding.button7.setOnClickListener(){
+            finish()
+        }
+
     }
 
     private fun setupViewPager() {
