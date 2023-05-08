@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var cfijass: String
     lateinit var pendientess: String
     lateinit var plans: String
-    lateinit var sortedDataList: List<Facturas>
     var importeSlider: Double = 0.0
     var lista = emptyList<Facturas>()
     var importeSelec = ""
@@ -65,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -79,8 +79,10 @@ class MainActivity : AppCompatActivity() {
                 retrofitToRoom.getMyData()
             }
             // Ordenar la lista por importe de mayor a menor
-             sortedDataList = myDataList.sortedByDescending { facturas -> facturas.importeOrdenacion }
-
+            val sortedDataList =
+                myDataList.sortedByDescending { facturas -> facturas.importeOrdenacion }
+           /// Obtener el importe de la primera factura en la lista ordenada
+            importeSlider = sortedDataList.first().importeOrdenacion
             // Actualizar los datos del ViewModel y del adaptador
             viewModel.getFacturas(myDataList)
             adapter.setData(myDataList as ArrayList<Facturas>)
@@ -91,8 +93,6 @@ class MainActivity : AppCompatActivity() {
         })
         binding.buttonFilter.setOnClickListener {
             val intent = Intent(this, SecondaryActivity::class.java)
-            /// Obtener el importe de la primera factura en la lista ordenada
-            importeSlider = sortedDataList.first().importeOrdenacion
             intent.putExtra("importeSl", importeSlider)
             secondaryLauncher.launch(intent)
         }
