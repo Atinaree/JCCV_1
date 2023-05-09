@@ -31,6 +31,7 @@
         android:layout_height="32dp"
         android:layout_marginTop="16dp"
         android:text="@string/tituloPOPUP"
+        android:textColor="#0C0C0C"
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
