@@ -5,6 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.jccv_1.activities.MainActivity
 import com.example.jccv_1.databinding.SwapperBinding
+import com.example.jccv_1.red.RetrofitToRoom
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class SwapperActivity: AppCompatActivity() {
@@ -25,7 +28,11 @@ class SwapperActivity: AppCompatActivity() {
                 val intent = Intent(applicationContext, Actividad2::class.java)
                 startActivity(intent)
 
+        }
 
+        GlobalScope.launch {
+            val retrofitToRoom = RetrofitToRoom(application)
+            retrofitToRoom.getMyData()
         }
 
     }

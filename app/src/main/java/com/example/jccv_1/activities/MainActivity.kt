@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
             var sortedDataList =
                 myDataList.sortedByDescending { facturas -> facturas.importeOrdenacion }
            /// Obtener el importe de la primera factura en la lista ordenada
-           importeSlider = sortedDataList.first().importeOrdenacion
+            importeSlider = sortedDataList.firstOrNull()?.importeOrdenacion ?: 0.0
             // Actualizar los datos del ViewModel y del adaptador
             viewModel.getFacturas(myDataList)
             adapter.setData(myDataList as ArrayList<Facturas>)
