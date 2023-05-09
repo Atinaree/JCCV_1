@@ -29,7 +29,6 @@ import com.example.jccv_1.modeladoDatos.Facturas
 import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 import kotlin.collections.ArrayList
-
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val adapter = CustomAdapter()
@@ -44,7 +43,6 @@ class MainActivity : AppCompatActivity() {
     var importeSlider: Double = 0.0
     var lista = emptyList<Facturas>()
     var importeSelec = ""
-
     private val viewModel: MainViewModel by viewModels { MainViewModel.viewModelFactory(emptyList()) }
     private val secondaryLauncher =
         registerForActivityResult(StartActivityForResult()) { activityResult ->
@@ -64,7 +62,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -96,10 +93,8 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("importeSl", importeSlider)
             secondaryLauncher.launch(intent)
         }
-
         binding.button2.setOnClickListener(){
             finish()
-            
         }
     }
     fun aplicarFiltros() {
@@ -155,24 +150,16 @@ class MainActivity : AppCompatActivity() {
                     listaf = filtroPagadas
                 }
                 if (pendientess == "Y") {
-                    listaf = (listaf + filtroPendientes).sortedByDescending { facturas: Facturas ->
-                        sdf.parse(facturas.fecha)
-                    }
+                    listaf = (listaf + filtroPendientes)
                 }
                 if (anuladass == "Y") {
-                    listaf = (listaf + filtroAnuladas).sortedByDescending { facturas: Facturas ->
-                        sdf.parse(facturas.fecha)
-                    }
+                    listaf = (listaf + filtroAnuladas)
                 }
                 if (cfijass == "Y") {
-                    listaf = (listaf + filtroCfija).sortedByDescending { facturas: Facturas ->
-                        sdf.parse(facturas.fecha)
-                    }
+                    listaf = (listaf + filtroCfija)
                 }
                 if (plans == "Y") {
-                    listaf = (listaf + filtroPlan).sortedByDescending { facturas: Facturas ->
-                        sdf.parse(facturas.fecha)
-                    }
+                    listaf = (listaf + filtroPlan)
                 }
                 // Finalmente carga la lista
                 lista = listaf
@@ -189,8 +176,6 @@ class MainActivity : AppCompatActivity() {
             lista = dataDao.getALL()
         }
     }
-
-
 }
 
 
