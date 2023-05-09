@@ -1,7 +1,9 @@
 package com.example.jccv_1.practica2
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import com.example.jccv_1.R
 import com.example.jccv_1.databinding.TabberBinding
 import com.google.android.material.tabs.TabLayout
@@ -10,6 +12,8 @@ import com.google.android.material.tabs.TabLayout
 class Actividad2 : AppCompatActivity() {
 
     private lateinit var binding: TabberBinding
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +25,10 @@ class Actividad2 : AppCompatActivity() {
         binding.button7.setOnClickListener(){
             finish()
         }
+
+
+
+
 
     }
 
