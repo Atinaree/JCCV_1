@@ -18,6 +18,7 @@
     <string name="PlanDePago">Plan de pago</string>
     <string name="SmartSolar">Smart Solar</string>
     <string name="Atras">Atras</string>
+    <string name="Aceptar">Aceptar</string>
     <string name="Practicas">Prácticas Android JCCV</string>
     <string name="Practica1">Práctica 1</string>
     <string name="Practica2">Práctica 2</string>
@@ -31,6 +32,8 @@
     <string name="TipoAutoconsumo">Tipo Autoconsumo</string>
     <string name="CompensacionExcedentes">Compensación de excedentes</string>
     <string name="PotenciaInstalacion">Potencia de instalación</string>
+    <string name="tituloPOPUP">Estado solicitud autoconsumo</string>
+    <string name="contenidoPOPUP">El tiempo estimado de activación de tu autoconsumo es de 1 a 2 meses, éste variará en función de tu comunidad autónoma y distribuidora.</string>
 
 
 

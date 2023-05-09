@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.jccv_1.R
-import com.example.jccv_1.databinding.SecondFragmentBinding
 import com.example.jccv_1.databinding.ThirdFragmentBinding
+import android.app.AlertDialog
+import android.content.DialogInterface
+import androidx.appcompat.widget.ButtonBarLayout
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
 
 
 class ThirdFragment : Fragment(R.layout.third_fragment) {
@@ -23,6 +26,10 @@ class ThirdFragment : Fragment(R.layout.third_fragment) {
         stateListDrawable.addState(intArrayOf(), resources.getDrawable(R.drawable.botoninfoazul))
         botonInfo.background = stateListDrawable
 
+        botonInfo.setOnClickListener {
+            showPopup()
+        }
+
         return view
     }
 
@@ -31,9 +38,31 @@ class ThirdFragment : Fragment(R.layout.third_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupData()
+
+
+
     }
     private fun setupData() {
         binding = ThirdFragmentBinding.inflate(layoutInflater)
 
     }
+    private fun showPopup() {
+        val builder = AlertDialog.Builder(requireContext())
+        val inflater = requireActivity().layoutInflater
+
+    builder.setView(inflater.inflate(R.layout.formatopop, null))
+
+        val dialog = builder.create()
+        dialog.show()
+
+        val botono = dialog.findViewById<Button>(R.id.botonAceptar)
+        botono?.setOnClickListener(){
+            dialog.dismiss()
+
+        }
+
+
+    }
+
+
 }
