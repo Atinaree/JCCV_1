@@ -9,9 +9,6 @@ import androidx.fragment.app.Fragment
 import com.example.jccv_1.R
 import com.example.jccv_1.databinding.ThirdFragmentBinding
 import android.app.AlertDialog
-
-
-
 class ThirdFragment : Fragment(R.layout.third_fragment) {
     private lateinit var binding: ThirdFragmentBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

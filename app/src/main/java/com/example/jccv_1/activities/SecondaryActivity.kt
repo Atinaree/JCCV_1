@@ -2,7 +2,6 @@ package com.example.jccv_1.activities
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.*
 import com.example.jccv_1.R
@@ -42,22 +41,26 @@ class SecondaryActivity : Activity() {
         val config = baseContext.resources.configuration
         config.setLocale(locale)
         baseContext.createConfigurationContext(config)
+
         super.onCreate(savedInstanceState)
         binding = SecondaryActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         // Cargar layout en el LinearLayout
         val inflater = LayoutInflater.from(this)
         itemfiltross = binding.itemfiltross
         val item = inflater.inflate(R.layout.itemfiltross, null)
         itemfiltross.addView(item)
+
         val button1 = item.findViewById<Button>(R.id.botonFechaIni)
         val button2 = item.findViewById<Button>(R.id.botonFechaFin)
         val importe = item.findViewById<TextView>(R.id.importeMAX)
+
         val importeSl = intent.getDoubleExtra("importeSl", 0.0)
         importe.text = ceil(importeSl).toInt().toString() + "€"
+
         DatePickerDesde(button1)
         DatePickerHasta(button2)
-
         button2.setOnClickListener(){
             if (button1.text.toString() != "día/mes/año"){
                 val sdf = SimpleDateFormat("dd/MM/yyyy")
@@ -66,10 +69,12 @@ class SecondaryActivity : Activity() {
                 DatePickerHasta(button2)
             }
         }
+
         //Boton para cerrar la vista
         binding.buttonFilter.setOnClickListener {
             finish()
         }
+
         // Boton para quitar filtros
         binding.button3.setOnClickListener {
             button1.text = "día/mes/año"

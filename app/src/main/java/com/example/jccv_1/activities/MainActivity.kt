@@ -43,9 +43,9 @@ class MainActivity : AppCompatActivity() {
     var importeSlider: Double = 0.0
     var lista = emptyList<Facturas>()
     var importeSelec = ""
+
     private val viewModel: MainViewModel by viewModels { MainViewModel.viewModelFactory(emptyList()) }
-    private val secondaryLauncher =
-        registerForActivityResult(StartActivityForResult()) { activityResult ->
+    private val secondaryLauncher = registerForActivityResult(StartActivityForResult()) { activityResult ->
             if (activityResult.resultCode == RESULT_OK) {
                 fechaini = activityResult.data?.getStringExtra(fecha).orEmpty()
                 fechafin = activityResult.data?.getStringExtra(fecha2).orEmpty()
@@ -59,6 +59,9 @@ class MainActivity : AppCompatActivity() {
                 val retrofitToRoom = RetrofitToRoom(application)
                 GlobalScope.launch {
                     lista = retrofitToRoom.getMyData()
+                    var sortedDataList =
+                        lista.sortedByDescending { facturas -> facturas.importeOrdenacion }
+                    importeSlider = sortedDataList.first().importeOrdenacion
                 }
             }
         }
@@ -76,10 +79,10 @@ class MainActivity : AppCompatActivity() {
                 retrofitToRoom.getMyData()
             }
             // Ordenar la lista por importe de mayor a menor
-            val sortedDataList =
+            var sortedDataList =
                 myDataList.sortedByDescending { facturas -> facturas.importeOrdenacion }
            /// Obtener el importe de la primera factura en la lista ordenada
-            importeSlider = sortedDataList.first().importeOrdenacion
+           importeSlider = sortedDataList.first().importeOrdenacion
             // Actualizar los datos del ViewModel y del adaptador
             viewModel.getFacturas(myDataList)
             adapter.setData(myDataList as ArrayList<Facturas>)

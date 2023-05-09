@@ -13,11 +13,8 @@ class Actividad2 : AppCompatActivity() {
 
     private lateinit var binding: TabberBinding
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = TabberBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupTabLayout()
@@ -25,11 +22,6 @@ class Actividad2 : AppCompatActivity() {
         binding.button7.setOnClickListener(){
             finish()
         }
-
-
-
-
-
     }
 
     private fun setupViewPager() {
