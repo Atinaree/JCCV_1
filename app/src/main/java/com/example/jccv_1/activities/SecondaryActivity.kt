@@ -81,8 +81,8 @@ class SecondaryActivity : Activity() {
 
         // Boton para quitar filtros (resetea los valores)
         binding.button3.setOnClickListener {
-            button1.text = R.string.textoBonotesFecha.toString()
-            button2.text = R.string.textoBonotesFecha.toString()
+            button1.text = getText(R.string.textoBonotesFecha)
+            button2.text = getText(R.string.textoBonotesFecha)
 
             val slider = findViewById<SeekBar>(R.id.barraImporte)
             val checkBox1 = findViewById<CheckBox>(R.id.chPagada)
@@ -120,7 +120,7 @@ class SecondaryActivity : Activity() {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 // Aquí se ejecutará el código cuando el valor de la seekbar cambie
                 val importeActual = item.findViewById<TextView>(R.id.importeActual)
-                importeActual.setText(progress.toString())
+                importeActual.setText(progress.toString()+ "€")
             }
 
             //Aqui va el codigo que se ejecuta mientras se esta modificando
