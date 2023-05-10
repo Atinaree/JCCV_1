@@ -1,7 +1,6 @@
 package com.example.jccv_1.red
 
 import android.app.Application
-import android.util.Log
 import com.example.jccv_1.database.facturaDAO
 import com.example.jccv_1.database.facturasAPP
 import com.example.jccv_1.modeladoDatos.Facturas
@@ -10,36 +9,40 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-
 class RetrofitToRoom(application: Application) {
     private val apiService: ApiService = RetrofitAPI.getApiService()
     private val mockService: MockService = RetrofitAPI.getMockService()
     private val dataDao: facturaDAO = facturasAPP.room.facturaDAO()
+
     suspend fun getMyData(): List<Facturas> {
         return withContext(Dispatchers.IO) {
             try {
                 val response = try {
-                    Log.d("holi", "entra por retrofit")
-
+                    // Llamada a la API utilizando Retrofit
                     apiService.getFacturas().execute()
-
                 } catch (e: Exception) {
-                    Log.d("holi", "entra por mocko")
-
+                    // En caso de error, utilizar el servicio de mock
                     mockService.geFacturasMock()?.execute()
                 }
+
                 if (response != null) {
                     if (response.isSuccessful) {
                         val myDataList = response?.body()!!.facturas
+
+                        // Eliminar datos existentes en la base de datos
                         CoroutineScope(Dispatchers.IO).launch {
                             dataDao.eliminar()
+
+                            // Insertar los nuevos datos en la base de datos
                             dataDao.insert(myDataList)
                         }
                     }
                 }
+
+                // Obtener todos los datos de la base de datos
                 dataDao.getALL()
             } catch (e: Exception) {
-                // Manejar la excepción
+                // Manejar la excepción y devolver una lista vacía
                 emptyList()
             }
         }
