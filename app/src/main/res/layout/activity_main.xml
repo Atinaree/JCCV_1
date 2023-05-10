@@ -47,15 +47,16 @@
         style="@style/botonSinBordes"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="7dp"
         android:layout_marginEnd="227dp"
         android:layout_marginBottom="7dp"
         android:backgroundTint="#FFFFFF"
-        android:text="@string/botonConsumo"
+        android:text="@string/Atras"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="#5AC833"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toStartOf="@+id/buttonFilter"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,18 +80,5 @@
         app:layout_constraintStart_toStartOf="@+id/toolbar2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.105" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="26dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="4dp"
-        android:text="€"
-        android:textColor="#090909"
-        android:textSize="28dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

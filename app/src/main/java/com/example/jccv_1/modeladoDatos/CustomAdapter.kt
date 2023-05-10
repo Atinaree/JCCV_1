@@ -1,6 +1,7 @@
 package com.example.jccv_1.modeladoDatos
 
 import android.annotation.SuppressLint
+import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,10 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jccv_1.R
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.math.absoluteValue
 
 class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
@@ -44,9 +49,21 @@ class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
         val factura = facturasList[position]
 
         // Establece los datos en las vistas correspondientes
-        holder.itemFecha.text = factura.fecha
-        holder.itemEstado.text = factura.descEstado
-        holder.itemImporte.text = factura.importeOrdenacion.toString()
+
+        //Formateamos
+        val formatoEntrada = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val formatoSalida = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+        var fechapar = factura.fecha
+        val fechaFactura: Date = formatoEntrada.parse(fechapar)
+        val fechaFormateada: String = formatoSalida.format(fechaFactura)
+
+        holder.itemFecha.text = fechaFormateada
+        if (factura.descEstado == holder.itemView.context.getString(R.string.estado)) {
+            holder.itemEstado.text = factura.descEstado
+        }else{
+            holder.itemEstado.text = ""
+        }
+        holder.itemImporte.text = holder.itemView.context.getString(R.string.euro, factura.importeOrdenacion.toString())
 
         // Configura el clic en el elemento de la lista
         holder.itemView.setOnClickListener {
@@ -94,3 +111,5 @@ class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 }
+
+
