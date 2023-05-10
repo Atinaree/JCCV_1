@@ -3,6 +3,7 @@ package com.example.jccv_1.secondary
 import android.app.DatePickerDialog
 import android.widget.Button
 import android.widget.DatePicker
+import com.example.jccv_1.R
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -40,6 +41,7 @@ class DatePickerDesde(
         }
         val dialog = DatePickerDialog(
             button.context,
+            R.style.datePicker,
             this,
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
@@ -86,6 +88,7 @@ class DatePickerDesde(
     private fun showDatePickerDialog(minDate: Long? = null, maxDate: Long? = null) {
         val dialog = DatePickerDialog(
             button.context,
+            R.style.datePicker,
             this,
             Calendar.getInstance().get(Calendar.YEAR),
             Calendar.getInstance().get(Calendar.MONTH),
@@ -98,6 +101,8 @@ class DatePickerDesde(
         }
         // Limitar la fecha máxima permitida para selección en el DatePicker a hoy
         dialog.datePicker.maxDate = Calendar.getInstance().timeInMillis
+
         dialog.show()
+
     }
 }

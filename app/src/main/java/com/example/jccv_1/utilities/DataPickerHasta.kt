@@ -2,6 +2,7 @@ package com.example.jccv_1.secondary
 import android.app.DatePickerDialog
 import android.widget.Button
 import android.widget.DatePicker
+import com.example.jccv_1.R
 import java.text.SimpleDateFormat
 import java.util.*
 class DatePickerHasta(private val button: Button, private val minDate: Long? = null) :
@@ -36,6 +37,7 @@ class DatePickerHasta(private val button: Button, private val minDate: Long? = n
         }
         val dialog = DatePickerDialog(
             button.context,
+            R.style.datePicker,
             this,
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
@@ -65,6 +67,7 @@ class DatePickerHasta(private val button: Button, private val minDate: Long? = n
      fun showDatePickerDialog(minDate: Long) {
         val dialog = DatePickerDialog(
             button.context,
+            R.style.datePicker,
             this,
             Calendar.getInstance().get(Calendar.YEAR),
             Calendar.getInstance().get(Calendar.MONTH),

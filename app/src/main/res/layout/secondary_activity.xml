@@ -29,6 +29,7 @@
         android:background="@drawable/redondeo_boton"
         android:backgroundTint="#8CC846"
         android:text="Aplicar"
+        android:textColor="#FAF9F9"
         android:textSize="20sp"
         android:textStyle="bold"
         app:iconTint="#C62020"

@@ -59,6 +59,7 @@ class SecondaryActivity : Activity() {
 
 
 //Montamos los datapickers en sus respectivos botones
+
         DatePickerDesde(button1)
         DatePickerHasta(button2)
         /*
@@ -140,11 +141,11 @@ class SecondaryActivity : Activity() {
     fun aplicarFiltros() {
         val fecha1 = findViewById<Button>(R.id.botonFechaIni)
         val fecha22 = findViewById<Button>(R.id.botonFechaFin)
-        val checkBox1 = findViewById<CheckBox>(R.id.chPagada)
-        val checkBox2 = findViewById<CheckBox>(R.id.chAnulada)
-        val checkBox3 = findViewById<CheckBox>(R.id.chCuotaFija)
-        val checkBox4 = findViewById<CheckBox>(R.id.chPendientes)
-        val checkBox5 = findViewById<CheckBox>(R.id.chPlan)
+        val checkPagadas = findViewById<CheckBox>(R.id.chPagada)
+        val checkAnuladas = findViewById<CheckBox>(R.id.chAnulada)
+        val checkCFija = findViewById<CheckBox>(R.id.chCuotaFija)
+        val checkPendientes = findViewById<CheckBox>(R.id.chPendientes)
+        val checkPlan = findViewById<CheckBox>(R.id.chPlan)
         val intent = Intent()
 
         fechaInicial = fecha1.text.toString()
@@ -158,16 +159,11 @@ class SecondaryActivity : Activity() {
         una Y en las distintas variables, a la espera de pasar dicho valor despues a traves
         del inten.
          */
-        if (checkBox1.isChecked)
-            intent.putExtra(pagadas, "Y")
-        if (checkBox2.isChecked)
-            intent.putExtra(anuladas, "Y")
-        if (checkBox3.isChecked)
-            intent.putExtra(cfija, "Y")
-        if (checkBox4.isChecked)
-            intent.putExtra(pendientes, "Y")
-        if (checkBox5.isChecked)
-            intent.putExtra(plan, "Y")
+        if (checkPagadas.isChecked) intent.putExtra(pagadas, "Y")
+        if (checkAnuladas.isChecked) intent.putExtra(anuladas, "Y")
+        if (checkCFija.isChecked) intent.putExtra(cfija, "Y")
+        if (checkPendientes.isChecked) intent.putExtra(pendientes, "Y")
+        if (checkPlan.isChecked) intent.putExtra(plan, "Y")
         /*
         Mandamos el resultado a la MainActivity y cerramos la actividad
          */
