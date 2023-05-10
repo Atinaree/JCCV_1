@@ -34,8 +34,7 @@
     <string name="PotenciaInstalacion">Potencia de instalación</string>
     <string name="tituloPOPUP">Estado solicitud autoconsumo</string>
     <string name="contenidoPOPUP">El tiempo estimado de activación de tu autoconsumo es de 1 a 2 meses, éste variará en función de tu comunidad autónoma y distribuidora.</string>
-
-
+    <string name="textoBonotesFecha">día/mes/año</string>
 
 
 </resources>
