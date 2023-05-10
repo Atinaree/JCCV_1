@@ -218,7 +218,11 @@ class MainActivity : AppCompatActivity() {
                 // Finalmente iguala la lista de filtros check a la lista
                 lista = listaf
             }
-            //Trozo filtro por importe
+            /*
+            Trozo filtro por importe. Primero controlamos que no sea vacio (que no se haya puesto ningun
+            valor, y despues que no sea 0. Esto lo hago porque descubri que habia un bug que si se movia el
+            slider del valor inicial y se volvia a poner en 0 explotaba la aplicacion.
+             */
             if (importeSelec != "") {
                 if (importeSelec != "0") {
                     lista =
