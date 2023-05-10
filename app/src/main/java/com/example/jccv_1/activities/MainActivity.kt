@@ -3,8 +3,6 @@ package com.example.jccv_1.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.*
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
@@ -55,7 +53,6 @@ class MainActivity : AppCompatActivity() {
 
     // Lista vacia que usarmeos despues para ir recargando datos de facturas
     var lista = emptyList<Facturas>()
-
     private val viewModel: MainViewModel by viewModels { MainViewModel.viewModelFactory(emptyList()) }
 
     /*
@@ -196,7 +193,6 @@ class MainActivity : AppCompatActivity() {
                 lista.filter { facturas: Facturas -> facturas.descEstado == "Pendiente de pago" }
             var filtroPlan =
                 lista.filter { facturas: Facturas -> facturas.descEstado == "Plan de pago" }
-
             // Si alguno esta marcado, lista vacia y carga lo que este marcado.
             if (pagadass == "Y" || pendientess == "Y" || anuladass == "Y" || cfijass == "Y" || plans == "Y") {
                 var listaf = emptyList<Facturas>()
@@ -227,7 +223,6 @@ class MainActivity : AppCompatActivity() {
                 if (importeSelec != "0") {
                     lista =
                         lista.filter { facturas: Facturas -> facturas.importeOrdenacion <= importeSelec.toInt() }
-                    Log.d("listafiltradaimporte", lista.toString())
                 }
             }
             viewModel.getFacturas(lista)
