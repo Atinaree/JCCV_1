@@ -46,6 +46,9 @@ class SecondaryActivity : Activity() {
         binding = SecondaryActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
+
         // Cargar layout en el LinearLayout
         val inflater = LayoutInflater.from(this)
         itemfiltross = binding.itemfiltross
@@ -53,9 +56,11 @@ class SecondaryActivity : Activity() {
         val item = inflater.inflate(R.layout.itemfiltross, null)
         itemfiltross.addView(item)
 
+
         val button1 = item.findViewById<Button>(R.id.botonFechaIni)
         val button2 = item.findViewById<Button>(R.id.botonFechaFin)
         val importe = item.findViewById<TextView>(R.id.importeMAX)
+        findViewById<TextView>(R.id.importeMIN).text = getString(R.string.euro, "0")
 
 
 //Montamos los datapickers en sus respectivos botones
@@ -112,7 +117,7 @@ class SecondaryActivity : Activity() {
         facturas.
          */
         val importeSl = intent.getDoubleExtra("importeSl", 0.0)
-        importe.text = ceil(importeSl).toInt().toString() + "€"
+        importe.text = getString(R.string.euro,ceil(importeSl).toInt().toString())
         val barra = findViewById<SeekBar>(R.id.barraImporte)
         val maximo = ceil(importeSl).toInt()
         barra.max = maximo // Establecer el valor máximo a la seekbar
@@ -121,7 +126,7 @@ class SecondaryActivity : Activity() {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 // Aquí se ejecutará el código cuando el valor de la seekbar cambie
                 val importeActual = item.findViewById<TextView>(R.id.importeActual)
-                importeActual.setText(progress.toString()+ "€")
+                importeActual.setText(getString(R.string.euro,progress.toString() ))
             }
 
             //Aqui va el codigo que se ejecuta mientras se esta modificando
