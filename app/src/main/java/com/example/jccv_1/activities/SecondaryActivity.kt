@@ -60,6 +60,8 @@ class SecondaryActivity : Activity() {
         val button1 = item.findViewById<Button>(R.id.botonFechaIni)
         val button2 = item.findViewById<Button>(R.id.botonFechaFin)
         val importe = item.findViewById<TextView>(R.id.importeMAX)
+
+        //setear valor 0€ en la pantalla de filtros
         findViewById<TextView>(R.id.importeMIN).text = getString(R.string.euro, "0")
 
 

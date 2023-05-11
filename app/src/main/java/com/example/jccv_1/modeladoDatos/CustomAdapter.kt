@@ -1,7 +1,6 @@
 package com.example.jccv_1.modeladoDatos
 
 import android.annotation.SuppressLint
-import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import com.example.jccv_1.R
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.math.absoluteValue
+
 
 class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 

@@ -149,7 +149,8 @@ class MainActivity : AppCompatActivity() {
              Si hay 2 fechas montamos dos variables que tengan las distintas facturas y sacamos la
              interseccion (las que coinciden)
              */
-            if (fechaini != "día/mes/año" && fechafin != "día/mes/año") {
+            val ficha = "día/mes/año"
+            if (fechaini != ficha && fechafin != ficha) {
                 var inicial = lista.filter { factura: Facturas ->
                     sdf.parse(factura.fecha) >= sdf.parse(fechaini)
                 }
@@ -170,14 +171,14 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 //Si no hay fecha ( no filtra por aqui por lo que no hace nada)
-            } else if (fechaini == "día/mes/año" && fechafin == "día/mes/año") {
+            } else if (fechaini == ficha && fechafin == ficha) {
                 //Si solo hay una fecha(inicial)
-            } else if (fechaini != "día/mes/año") {
+            } else if (fechaini != ficha) {
                 lista = lista.filter { factura: Facturas ->
                     sdf.parse(factura.fecha) >= sdf.parse(fechaini)
                 }
                 //Si solo hay una fecha(final)
-            } else if (fechafin != "día/mes/año") {
+            } else if (fechafin != ficha) {
                 lista = lista.filter { factura: Facturas ->
                     sdf.parse(factura.fecha) <= sdf.parse(fechafin)
                 }
@@ -219,11 +220,8 @@ class MainActivity : AppCompatActivity() {
             valor, y despues que no sea 0. Esto lo hago porque descubri que habia un bug que si se movia el
             slider del valor inicial y se volvia a poner en 0 explotaba la aplicacion.
              */
-            if (importeSelec != "") {
-                if (importeSelec != "0") {
-                    lista =
-                        lista.filter { facturas: Facturas -> facturas.importeOrdenacion <= importeSelec.toInt() }
-                }
+            if (importeSelec != "" && importeSelec != "0") {
+                    lista = lista.filter { facturas: Facturas -> facturas.importeOrdenacion <= importeSelec.toInt() }
             }
             viewModel.getFacturas(lista)
             lista = dataDao.getALL()
