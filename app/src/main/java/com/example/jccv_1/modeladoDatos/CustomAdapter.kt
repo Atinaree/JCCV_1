@@ -51,8 +51,8 @@ class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
         // Establece los datos en las vistas correspondientes
 
         //Formateamos
-        val formatoEntrada = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        val formatoSalida = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+        val formatoEntrada = SimpleDateFormat("dd/MM/yyyy", Locale.forLanguageTag("es"))
+        val formatoSalida = SimpleDateFormat("dd MMM yyyy", Locale.forLanguageTag("es"))
         var fechapar = factura.fecha
         val fechaFactura: Date = formatoEntrada.parse(fechapar)
         val fechaFormateada: String = formatoSalida.format(fechaFactura)
