@@ -221,7 +221,8 @@ class MainActivity : AppCompatActivity() {
             slider del valor inicial y se volvia a poner en 0 explotaba la aplicacion.
              */
             if (importeSelec != "" && importeSelec != "0") {
-                    lista = lista.filter { facturas: Facturas -> facturas.importeOrdenacion <= importeSelec.toInt() }
+                lista =
+                    lista.filter { facturas: Facturas -> facturas.importeOrdenacion <= importeSelec.toInt() }
             }
             viewModel.getFacturas(lista)
             lista = dataDao.getALL()

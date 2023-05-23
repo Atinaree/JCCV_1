@@ -1,0 +1,15 @@
+
+l
+<app/src/main/java/com/example/jccv_1/activities/viewModel.kt,1\9\19f28c2bef8a2da3b940f7be61dd07960721f555
+k
+;app/src/main/java/com/example/jccv_1/database/facturaDAO.kt,4\1\4155fd84b5e5b73904b8ffb34b12eec4e1e37649
+l
+<app/src/main/java/com/example/jccv_1/database/facturasAPP.kt,a\2\a21b32bed0b9b4a9ff51dfb6dc76fd30777e5185
+k
+;app/src/main/java/com/example/jccv_1/database/FacturasDB.kt,4\a\4a1b9596e3a99540af92444bde150bb675b0e602
+n
+>app/src/main/java/com/example/jccv_1/modeladoDatos/FactForm.kt,f\7\f7792cc7240a21d036bdfc414d736bedb670ff35
+n
+>app/src/main/java/com/example/jccv_1/modeladoDatos/Facturas.kt,0\e\0eb62bbbc1a14e314ef77784b75decb1b5068c29
+s
+Capp/src/main/java/com/example/jccv_1/modeladoDatos/CustomAdapter.kt,c\1\c1a17f14c315c00174f57f04052ebca95e282c2a

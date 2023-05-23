@@ -9,7 +9,7 @@ class DatePickerHasta(private val button: Button, private val minDate: Long? = n
     DatePickerDialog.OnDateSetListener {
     private val dateFormatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     init {
-        button.setOnClickListener { showDatePickerDialog() }
+
     }
     fun getDate(): Date? {
         val dateString = button.text.toString()

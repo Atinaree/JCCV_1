@@ -3,6 +3,7 @@ package com.example.jccv_1.activities
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.*
 import com.example.jccv_1.R
@@ -35,6 +36,8 @@ class SecondaryActivity : Activity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         // Configuracion regional
         val locale = Locale("es")
         Locale.setDefault(locale)
@@ -47,8 +50,6 @@ class SecondaryActivity : Activity() {
         setContentView(binding.root)
 
 
-
-
         // Cargar layout en el LinearLayout
         val inflater = LayoutInflater.from(this)
         itemfiltross = binding.itemfiltross
@@ -58,8 +59,29 @@ class SecondaryActivity : Activity() {
 
 
         val button1 = item.findViewById<Button>(R.id.botonFechaIni)
+        button1.text = filtros.fecha1filtro
         val button2 = item.findViewById<Button>(R.id.botonFechaFin)
+        button2.text = filtros.fecha2filtro
+        val importeso = item.findViewById<SeekBar>(R.id.barraImporte)
+        importeso.progress = filtros.importefiltro.toInt()
+        var importeActual = item.findViewById<TextView>(R.id.importeActual)
+        importeActual.text = importeso.progress.toString() + "€"
         val importe = item.findViewById<TextView>(R.id.importeMAX)
+
+        var pagadacheck = item.findViewById<CheckBox>(R.id.chPagada)
+        pagadacheck.isChecked = filtros.pagada.toBoolean()
+        var anuladacheck = item.findViewById<CheckBox>(R.id.chAnulada)
+        anuladacheck.isChecked = filtros.anulada.toBoolean()
+
+        var cfijacheck = item.findViewById<CheckBox>(R.id.chCuotaFija)
+        cfijacheck.isChecked = filtros.cfija.toBoolean()
+
+        var pendientecheck = item.findViewById<CheckBox>(R.id.chPendientes)
+        pendientecheck.isChecked = filtros.pendiente.toBoolean()
+
+        var plancheck = item.findViewById<CheckBox>(R.id.chPlan)
+        plancheck.isChecked = filtros.plan.toBoolean()
+
 
         //setear valor 0€ en la pantalla de filtros
         findViewById<TextView>(R.id.importeMIN).text = getString(R.string.euro, "0")
@@ -67,19 +89,25 @@ class SecondaryActivity : Activity() {
 
 //Montamos los datapickers en sus respectivos botones
 
-        DatePickerDesde(button1)
-        DatePickerHasta(button2)
-        /*
-         Evento listener para establecer la fecha minima del segundo boton, para el
-         caso en que se seleccione ambas fechas ( desde y hasta) para que la fecha hasta
-         no pueda ser anterior a la de desde.
-         */
+        button1.setOnClickListener(){
+            //Si no hay fecha hasta abre el dialogo de serie
+            if (button2.text.toString() == getString(R.string.diamesyaño)){
+                DatePickerDesde(button1).showDatePickerDialog()
+            } else {
+            //Si tambien hay una fecha hasta
+                DatePickerDesde(button1).showDatePickerDialog()
+            }
+
+        }
         button2.setOnClickListener() {
-            if (button1.text.toString() != "día/mes/año") {
+            if (button1.text.toString() == getString(R.string.diamesyaño)) {
+                DatePickerHasta(button2).showDatePickerDialog()
+                Log.d("1234", "primero")
+            } else {
                 val sdf = SimpleDateFormat("dd/MM/yyyy")
                 DatePickerHasta(button2).setMinDate(sdf.parse(button1.text.toString()))
-            } else {
-                DatePickerHasta(button2)
+                Log.d("1234", "segundo")
+
             }
         }
         //Boton para cerrar la vista sin aplicar cambios
@@ -119,7 +147,7 @@ class SecondaryActivity : Activity() {
         facturas.
          */
         val importeSl = intent.getDoubleExtra("importeSl", 0.0)
-        importe.text = getString(R.string.euro,ceil(importeSl).toInt().toString())
+        importe.text = getString(R.string.euro, ceil(importeSl).toInt().toString())
         val barra = findViewById<SeekBar>(R.id.barraImporte)
         val maximo = ceil(importeSl).toInt()
         barra.max = maximo // Establecer el valor máximo a la seekbar
@@ -127,8 +155,8 @@ class SecondaryActivity : Activity() {
         barra.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 // Aquí se ejecutará el código cuando el valor de la seekbar cambie
-                val importeActual = item.findViewById<TextView>(R.id.importeActual)
-                importeActual.setText(getString(R.string.euro,progress.toString() ))
+                var importeActual = item.findViewById<TextView>(R.id.importeActual)
+                importeActual.setText(getString(R.string.euro, progress.toString()))
             }
 
             //Aqui va el codigo que se ejecuta mientras se esta modificando
@@ -147,13 +175,23 @@ class SecondaryActivity : Activity() {
 
     fun aplicarFiltros() {
         val fecha1 = findViewById<Button>(R.id.botonFechaIni)
+        filtros.fecha1filtro = fecha1.text.toString()
         val fecha22 = findViewById<Button>(R.id.botonFechaFin)
+        filtros.fecha2filtro = fecha22.text.toString()
+        val slider = findViewById<SeekBar>(R.id.barraImporte)
+        filtros.importefiltro = slider.progress.toString()
         val checkPagadas = findViewById<CheckBox>(R.id.chPagada)
+        filtros.pagada = checkPagadas.isChecked.toString()
         val checkAnuladas = findViewById<CheckBox>(R.id.chAnulada)
+        filtros.anulada = checkAnuladas.isChecked.toString()
         val checkCFija = findViewById<CheckBox>(R.id.chCuotaFija)
+        filtros.cfija = checkCFija.isChecked.toString()
         val checkPendientes = findViewById<CheckBox>(R.id.chPendientes)
+        filtros.pendiente = checkPendientes.isChecked.toString()
         val checkPlan = findViewById<CheckBox>(R.id.chPlan)
+        filtros.plan = checkPlan.isChecked.toString()
         val intent = Intent()
+
 
         fechaInicial = fecha1.text.toString()
         fechaFinal = fecha22.text.toString()

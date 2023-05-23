@@ -13,7 +13,6 @@ class DatePickerDesde(
     private val maxDate: Long? = null) : DatePickerDialog.OnDateSetListener {
     private val dateFormatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     init {
-        button.setOnClickListener { showDatePickerDialog() }
     }
     fun getDate(): Date? {
         val dateString = button.text.toString()
@@ -31,7 +30,7 @@ class DatePickerDesde(
         }
         button.text = dateFormatter.format(calendar.time)
     }
-    private fun showDatePickerDialog() {
+     fun showDatePickerDialog() {
         val currentDate = getDate() ?: Calendar.getInstance().time
         val calendar = Calendar.getInstance().apply {
             time = currentDate
@@ -85,7 +84,7 @@ class DatePickerDesde(
         }
         showDatePickerDialog(maxDate?.toLong())
     }
-    private fun showDatePickerDialog(minDate: Long? = null, maxDate: Long? = null) {
+   fun showDatePickerDialog(minDate: Long? = null, maxDate: Long? = null) {
         val dialog = DatePickerDialog(
             button.context,
             R.style.datePicker,
