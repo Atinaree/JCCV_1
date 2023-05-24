@@ -10,6 +10,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class RetrofitToRoom(application: Application) {
+    companion object{
+        var variabledepaso = 0
+
+    }
+
     private val apiService: ApiService = RetrofitAPI.getApiService()
     private val mockService: MockService = RetrofitAPI.getMockService()
     private val dataDao: facturaDAO = facturasAPP.room.facturaDAO()
@@ -17,10 +22,12 @@ class RetrofitToRoom(application: Application) {
     suspend fun getMyData(): List<Facturas> {
         return withContext(Dispatchers.IO) {
             try {
-                val response = try {
+
+                val response =
+                    if(variabledepaso == 0){
                     // Llamada a la API utilizando Retrofit
                     apiService.getFacturas().execute()
-                } catch (e: Exception) {
+                } else{
                     // En caso de error, utilizar el servicio de mock
                     mockService.geFacturasMock()?.execute()
                 }

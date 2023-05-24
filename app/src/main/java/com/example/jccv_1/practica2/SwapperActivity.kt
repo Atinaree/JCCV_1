@@ -24,6 +24,13 @@ class SwapperActivity: AppCompatActivity() {
 
         binding.retromoco.setOnClickListener(){
 
+        if (RetrofitToRoom.variabledepaso == 0) {
+            binding.retromoco.text = "RetroFit Activo"
+            RetrofitToRoom.variabledepaso = 1
+        }else{
+            binding.retromoco.text = "RetroMock Activo"
+            RetrofitToRoom.variabledepaso = 0
+        }
 
         }
 

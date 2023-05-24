@@ -41,7 +41,6 @@ class SignupActivity : AppCompatActivity() {
 
         registrar.setOnClickListener(){
             if (email.text.isNotEmpty() && contraseña.text.isNotEmpty()){
-
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.text.toString(),contraseña.text.toString())
                     .addOnCompleteListener{
                         if (it.isSuccessful){
@@ -51,7 +50,6 @@ class SignupActivity : AppCompatActivity() {
                         }
                     }
             } else {
-                alert()
             }
         }
 

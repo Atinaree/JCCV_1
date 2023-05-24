@@ -1,6 +1,4 @@
 
-l
-<app/src/main/java/com/example/jccv_1/activities/viewModel.kt,1\9\19f28c2bef8a2da3b940f7be61dd07960721f555
 k
 ;app/src/main/java/com/example/jccv_1/database/facturaDAO.kt,4\1\4155fd84b5e5b73904b8ffb34b12eec4e1e37649
 l
