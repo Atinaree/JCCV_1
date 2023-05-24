@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "433065401361",
+    "project_id": "practica3-2e09b",
+    "storage_bucket": "practica3-2e09b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433065401361:android:0188fa0bbddc433535e5b0",
+        "android_client_info": {
+          "package_name": "com.example.jccv_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433065401361-3rtiip6ats7aubm6cos12hgq90o3boqk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4dnPxwrjHp9ZTHrFVaNvnsd5jgekbN6w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433065401361-3rtiip6ats7aubm6cos12hgq90o3boqk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

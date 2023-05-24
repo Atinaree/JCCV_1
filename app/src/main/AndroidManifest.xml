@@ -15,7 +15,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".practica2.SwapperActivity"
+            android:name=".practica3.LoginActivity"
             android:theme="@style/AppTheme"
             android:exported="true">
             <intent-filter>
@@ -38,6 +38,16 @@
             android:theme="@style/AppTheme"
             android:exported="false" />
 
+        <activity android:name=".practica2.SwapperActivity"
+            android:theme="@style/AppTheme"
+            android:exported="false" />
+
+        <activity android:name=".practica3.ForgotPasswordActivity"
+            android:theme="@style/AppTheme"
+            android:exported="false" />
+        <activity android:name=".practica3.SignupActivity"
+            android:theme="@style/AppTheme"
+            android:exported="false" />
 
 
 

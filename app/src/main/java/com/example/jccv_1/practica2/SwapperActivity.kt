@@ -17,6 +17,10 @@ class SwapperActivity: AppCompatActivity() {
         binding = SwapperBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val bundle: Bundle? = intent.extras
+        val email = bundle?.getString("email")
+
+
         // Configurar el click listener para el botón con ID button5
         binding.button5.setOnClickListener() {
             // Crear un intent para abrir la actividad MainActivity
