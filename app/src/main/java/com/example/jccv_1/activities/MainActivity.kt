@@ -138,7 +138,6 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
     }
-
     fun aplicarFiltros() {
         GlobalScope.launch {
             //Cada vez que se aplica limpiamos la lista y la seteamos con todos

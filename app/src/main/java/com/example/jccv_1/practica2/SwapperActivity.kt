@@ -20,8 +20,12 @@ class SwapperActivity: AppCompatActivity() {
 
         val bundle: Bundle? = intent.extras
         val email = bundle?.getString("email")
-
         binding.correo.text = email
+
+        binding.retromoco.setOnClickListener(){
+
+
+        }
 
 
         // Configurar el click listener para el botón con ID button5

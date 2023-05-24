@@ -34,7 +34,6 @@ class LoginActivity : AppCompatActivity() {
         var contraseña = findViewById<TextInputEditText>(R.id.passwordEditText)
         var olvidado = findViewById<TextView>(R.id.olvidado)
 
-
         olvidado.setOnClickListener() {
             val intent = Intent(applicationContext, ForgotPasswordActivity::class.java)
             startActivity(intent)
@@ -54,6 +53,9 @@ class LoginActivity : AppCompatActivity() {
                             alert()
                         }
                     }
+            }
+            else{
+                alert()
             }
         }
     }

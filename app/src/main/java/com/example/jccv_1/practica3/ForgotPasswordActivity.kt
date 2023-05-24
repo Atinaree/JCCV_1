@@ -45,6 +45,8 @@ class ForgotPasswordActivity : AppCompatActivity() {
                             Toast.makeText(this, "Revise su correo electrónico", Toast.LENGTH_LONG)
                                 .show()
                             finish()
+                        }else{
+                            alert()
                         }
                     }
             }
@@ -54,7 +56,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
     private fun alert() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Error")
-        builder.setMessage("Se ha producido un error")
+        builder.setMessage("El usuario no existe.")
         builder.setPositiveButton("aceptar", null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
