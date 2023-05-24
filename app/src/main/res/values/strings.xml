@@ -39,12 +39,15 @@
     <string name="diamesyaño">día/mes/año</string>
     <string name="olvidado">He olvidado mis datos</string>
     <string name="tambien">También puedes</string>
-    <string name="recordar">"Recordar contraseña"</string>
-    <string name="entrar">"Entrar</string>
-    <string name="registrarse">"Registrarse"</string>
-    <string name="usuario">"Usuario"</string>
-    <string name="contraseña">"Contraseña"</string>
-    <string name="logotipo">"Logotipo"</string>
+    <string name="recordar">Recordar contraseña</string>
+    <string name="entrar">Entrar</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="usuario">Usuario</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="logotipo">Logotipo</string>
+    <string name="correo">Correo</string>
+    <string name="volver">Volver a login</string>
+    <string name="registro">Registro de usuario</string>
 
 
 
