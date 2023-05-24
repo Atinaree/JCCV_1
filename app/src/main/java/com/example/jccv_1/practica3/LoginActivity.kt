@@ -4,12 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.example.jccv_1.R
 import com.example.jccv_1.practica2.SwapperActivity
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 
@@ -30,14 +30,10 @@ class LoginActivity : AppCompatActivity() {
         title = "Autenticación"
         var registrar = findViewById<Button>(R.id.button3)
         var entrar = findViewById<Button>(R.id.entrarBtn)
-        var email = findViewById<EditText>(R.id.emailEditText)
-        var contraseña = findViewById<EditText>(R.id.passwordEditText)
+        var email = findViewById<TextInputEditText>(R.id.emailEditText)
+        var contraseña = findViewById<TextInputEditText>(R.id.passwordEditText)
         var olvidado = findViewById<TextView>(R.id.olvidado)
-        var mostrar = findViewById<ImageButton>(R.id.mostrarContraseña)
 
-        mostrar.setOnClickListener(){
-
-        }
 
         olvidado.setOnClickListener() {
             val intent = Intent(applicationContext, ForgotPasswordActivity::class.java)
@@ -48,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
         entrar.setOnClickListener() {
-            if (email.text.isNotEmpty() && contraseña.text.isNotEmpty()) {
+            if (!(email.text.isNullOrBlank() && contraseña.text.isNullOrBlank())) {
                 FirebaseAuth.getInstance()
                     .signInWithEmailAndPassword(email.text.toString(), contraseña.text.toString())
                     .addOnCompleteListener {

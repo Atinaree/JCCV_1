@@ -19,7 +19,7 @@
 
 
         <EditText
-            android:id="@+id/emailEditText"
+            android:id="@+id/textInputLayaout2"
             android:layout_width="376dp"
             android:layout_height="40dp"
             android:ems="10"
@@ -81,7 +81,7 @@
             android:text="Introduzca su email"
             android:textColor="#050505"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/emailEditText"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayaout2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.066"
             app:layout_constraintStart_toStartOf="parent"

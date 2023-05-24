@@ -19,7 +19,7 @@
 
 
         <EditText
-            android:id="@+id/emailEditText"
+            android:id="@+id/textInputLayaout2"
             android:layout_width="376dp"
             android:layout_height="40dp"
             android:ems="10"
@@ -51,7 +51,7 @@
             android:layout_height="40dp"
             android:ems="10"
             android:hint="Contraseña"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:textColor="#070707"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,20 +59,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.377" />
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="24dp"
-            android:layout_height="21dp"
-            android:background="@color/white"
-            android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.958"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.394"
-            app:srcCompat="@drawable/ojocerrado" />
 
         <Button
             android:id="@+id/entrarBtn"
@@ -93,6 +79,8 @@
             android:layout_width="138dp"
             android:layout_height="45dp"
             android:text="registrar"
+            android:textColor="#8CC846"
+            android:background="@drawable/redondeo_boton2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.069"

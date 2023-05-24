@@ -1,15 +1,12 @@
 package com.example.jccv_1.practica3
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.jccv_1.R
-import com.example.jccv_1.practica2.SwapperActivity
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 
@@ -35,7 +32,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
     private fun setup() {
         title = "Autenticación"
         var registrar = findViewById<Button>(R.id.button3)
-        var email = findViewById<EditText>(R.id.emailEditText)
+        var email = findViewById<EditText>(R.id.textInputLayaout2)
 
         registrar.setOnClickListener() {
             val email: String = email.text.toString().trim() { it <= ' ' }

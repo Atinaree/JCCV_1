@@ -35,7 +35,7 @@ class SignupActivity : AppCompatActivity() {
         title = "Autenticación"
         var registrar = findViewById<Button>(R.id.button3)
         var entrar = findViewById<Button>(R.id.entrarBtn)
-        var email = findViewById<EditText>(R.id.emailEditText)
+        var email = findViewById<EditText>(R.id.textInputLayaout2)
         var contraseña = findViewById<EditText>(R.id.passwordEditText)
 
         registrar.setOnClickListener(){
