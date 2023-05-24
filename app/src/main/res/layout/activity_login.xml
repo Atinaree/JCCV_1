@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AuthActivity"
+    tools:context=".practica3.LoginActivity"
     android:background="@color/white">
 
 
@@ -13,52 +13,33 @@
         android:id="@+id/emailEditText"
         android:layout_width="376dp"
         android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:ems="10"
         android:hint="Usuario"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
-        app:srcCompat="@drawable/logoiberdrola" />
+        app:layout_constraintVertical_bias="0.321" />
 
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="376dp"
         android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="24dp"
-        android:layout_height="21dp"
-        android:background="@color/white"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.958"
+        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ojocerrado" />
+        app:layout_constraintVertical_bias="0.419" />
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -67,10 +48,10 @@
         android:text="Recordar contraseña"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.558" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <Button
         android:id="@+id/entrarBtn"
@@ -78,24 +59,105 @@
         android:layout_height="45dp"
         android:background="@drawable/redondeo_boton"
         android:text="Entrar"
-
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.778" />
+        app:layout_constraintVertical_bias="0.8" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="registrar"
+        android:layout_width="212dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/redondeo_boton2"
+        android:text="Registrarse"
+        android:textAllCaps="false"
+        android:textColor="#8CC846"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/entrarBtn"
+        app:layout_constraintVertical_bias="0.107" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="150dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_logo_iberdrola_cli"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/mostrarContraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@color/transparente"
+        android:src="@drawable/ic_ojo_off"
+        app:layout_constraintBottom_toBottomOf="@+id/passwordEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/passwordEditText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/olvidado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/olvidado"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.938" />
+        app:layout_constraintVertical_bias="0.56" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/tambien"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/entrarBtn" />
+
+    <View
+        android:id="@+id/divider5"
+        android:layout_width="150dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="14dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/entrarBtn"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/divider7"
+        android:layout_width="150dp"
+        android:layout_height="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="13dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/entrarBtn"
+        app:layout_constraintVertical_bias="0.008" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

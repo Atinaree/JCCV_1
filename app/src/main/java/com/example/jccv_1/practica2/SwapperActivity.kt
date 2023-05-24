@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.jccv_1.activities.MainActivity
 import com.example.jccv_1.databinding.SwapperBinding
+import com.example.jccv_1.practica3.LoginActivity
 import com.example.jccv_1.red.RetrofitToRoom
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -20,6 +21,8 @@ class SwapperActivity: AppCompatActivity() {
         val bundle: Bundle? = intent.extras
         val email = bundle?.getString("email")
 
+        binding.correo.text = email
+
 
         // Configurar el click listener para el botón con ID button5
         binding.button5.setOnClickListener() {
@@ -33,6 +36,13 @@ class SwapperActivity: AppCompatActivity() {
         binding.button6.setOnClickListener(){
             val intent = Intent(applicationContext, Actividad2::class.java)
             startActivity(intent)
+        }
+
+        binding.button8.setOnClickListener(){
+            val intent = Intent(applicationContext, LoginActivity::class.java)
+            // Iniciar la actividad MainActivity
+            startActivity(intent)
+
         }
 
         // Cargamos datos en la base de datos.
