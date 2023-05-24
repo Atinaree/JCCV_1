@@ -48,6 +48,9 @@
     <string name="correo">Correo</string>
     <string name="volver">Volver a login</string>
     <string name="registro">Registro de usuario</string>
+    <string name="enviar">Enviar</string>
+    <string name="recuperar">Recuperar contraseña</string>
+    <string name="introduzca">Introduzca su email</string>
 
 
 
