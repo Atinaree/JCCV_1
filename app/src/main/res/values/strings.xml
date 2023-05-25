@@ -37,7 +37,7 @@
     <string name="textoBonotesFecha">día/mes/año</string>
     <string name="euro">%1$s €</string>
     <string name="diamesyaño">día/mes/año</string>
-    <string name="olvidado">He olvidado mis datos</string>
+    <string name="olvidado"><u>He olvidado mis datos</u></string>
     <string name="tambien">También puedes</string>
     <string name="recordar">Recordar contraseña</string>
     <string name="entrar">Entrar</string>
