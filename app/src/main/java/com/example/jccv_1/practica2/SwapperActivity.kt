@@ -1,8 +1,10 @@
 package com.example.jccv_1.practica2
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.jccv_1.R
 import com.example.jccv_1.activities.MainActivity
 import com.example.jccv_1.databinding.SwapperBinding
 import com.example.jccv_1.practica3.LoginActivity
@@ -13,23 +15,37 @@ import kotlinx.coroutines.launch
 class SwapperActivity: AppCompatActivity() {
     private lateinit var binding: SwapperBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = SwapperBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         val bundle: Bundle? = intent.extras
         val email = bundle?.getString("email")
         binding.correo.text = email
-
+        binding.retromoco.text = "Retrofit Activo"
         binding.retromoco.setOnClickListener(){
 
         if (RetrofitToRoom.variabledepaso == 0) {
-            binding.retromoco.text = "RetroFit Activo"
-            RetrofitToRoom.variabledepaso = 1
-        }else{
             binding.retromoco.text = "RetroMock Activo"
+            binding.retromoco.setBackgroundColor(getColor(R.color.rojo))
+            RetrofitToRoom.variabledepaso = 1
+            // Cargamos datos en la base de datos.
+            GlobalScope.launch {
+                val retrofitToRoom = RetrofitToRoom(application)
+                retrofitToRoom.getMyData()
+            }
+        }else{
+            binding.retromoco.text = "RetroFit Activo"
+            binding.retromoco.setBackgroundColor(getColor(R.color.verde))
             RetrofitToRoom.variabledepaso = 0
+            // Cargamos datos en la base de datos.
+            GlobalScope.launch {
+                val retrofitToRoom = RetrofitToRoom(application)
+                retrofitToRoom.getMyData()
+            }
         }
 
         }
@@ -56,10 +72,6 @@ class SwapperActivity: AppCompatActivity() {
 
         }
 
-        // Cargamos datos en la base de datos.
-        GlobalScope.launch {
-            val retrofitToRoom = RetrofitToRoom(application)
-            retrofitToRoom.getMyData()
-        }
+
     }
 }

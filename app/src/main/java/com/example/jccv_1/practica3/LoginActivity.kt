@@ -9,9 +9,12 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.example.jccv_1.R
 import com.example.jccv_1.practica2.SwapperActivity
+import com.example.jccv_1.red.RetrofitToRoom
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +27,10 @@ class LoginActivity : AppCompatActivity() {
         analytics.logEvent("InitScreen", bundle)
 //setup
         setup()
+        GlobalScope.launch {
+            val retrofitToRoom = RetrofitToRoom(application)
+            retrofitToRoom.getMyData()
+        }
     }
 
     private fun setup() {

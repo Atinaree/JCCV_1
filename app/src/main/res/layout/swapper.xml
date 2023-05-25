@@ -93,9 +93,11 @@
 
     <Button
         android:id="@+id/retromoco"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
+        android:background="@color/verde"
+        android:textStyle="bold"
         android:text="Cambiar MODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -11,4 +11,5 @@
     <color name="gris_oscuro">#676464</color>
     <color name="colorBackground">#FFFFFF</color>
     <color name="verde">#8CC846</color>
+    <color name="rojo">#FA0000</color>
 </resources>
