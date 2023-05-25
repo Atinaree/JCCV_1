@@ -1,6 +1,6 @@
 package com.example.jccv_1.practica2
 
-import android.annotation.SuppressLint
+
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -25,11 +25,11 @@ class SwapperActivity: AppCompatActivity() {
         val bundle: Bundle? = intent.extras
         val email = bundle?.getString("email")
         binding.correo.text = email
-        binding.retromoco.text = "Retrofit Activo"
+        binding.retromoco.text = getString(R.string.retrofit)
         binding.retromoco.setOnClickListener(){
 
         if (RetrofitToRoom.variabledepaso == 0) {
-            binding.retromoco.text = "RetroMock Activo"
+            binding.retromoco.text = getString(R.string.retromock)
             binding.retromoco.setBackgroundColor(getColor(R.color.rojo))
             RetrofitToRoom.variabledepaso = 1
             // Cargamos datos en la base de datos.
@@ -38,7 +38,7 @@ class SwapperActivity: AppCompatActivity() {
                 retrofitToRoom.getMyData()
             }
         }else{
-            binding.retromoco.text = "RetroFit Activo"
+            binding.retromoco.text = getString(R.string.retrofit)
             binding.retromoco.setBackgroundColor(getColor(R.color.verde))
             RetrofitToRoom.variabledepaso = 0
             // Cargamos datos en la base de datos.

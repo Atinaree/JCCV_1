@@ -51,6 +51,8 @@
     <string name="enviar">Enviar</string>
     <string name="recuperar">Recuperar contraseña</string>
     <string name="introduzca">Introduzca su email</string>
+    <string name="retromock">Retromock Activo</string>
+    <string name="retrofit">Retrofit Activo</string>
 
 
 

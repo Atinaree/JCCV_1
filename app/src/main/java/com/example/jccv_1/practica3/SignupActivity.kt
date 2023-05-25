@@ -50,6 +50,7 @@ class SignupActivity : AppCompatActivity() {
                         }
                     }
             } else {
+                alert()
             }
         }
 
@@ -65,8 +66,8 @@ Log.d("123", "hola")
 
     private fun alert(){
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Error")
-        builder.setMessage("Se ha producido un error")
+        builder.setTitle("Error de registro")
+        builder.setMessage("El usuario no existe o el formato aportado no es válido. El correo debe tener estruxtura texto@texto.com y la contraseña una longitud de al menos 6 cáracteres.")
         builder.setPositiveButton("aceptar",null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
