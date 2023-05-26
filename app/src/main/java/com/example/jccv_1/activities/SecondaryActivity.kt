@@ -22,7 +22,7 @@ class SecondaryActivity : Activity() {
     lateinit var adapter: CustomAdapter
     lateinit var fechaInicial: String
     lateinit var fechaFinal: String
-    var importeSeleccionado = ""
+    var importeSeleccionado = filtros.importefiltro
 
     companion object {
         const val fecha = "fechaini"
@@ -111,7 +111,7 @@ class SecondaryActivity : Activity() {
             }
         }
         //Boton para cerrar la vista sin aplicar cambios
-        binding.buttonFilter.setOnClickListener {
+        binding.buttonFilter.setOnClickListener {2
             finish()
         }
 

@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitAPI {
 
     //parte para el retrofit
-    private const val BASE_URL = "https://viewnextandroid2.wiremockapi.cloud/"
+    private const val BASE_URL = "https://viewnextandroid.mocklab.io/"
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
